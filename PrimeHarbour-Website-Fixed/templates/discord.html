@@ -1,430 +1,207 @@
 {% extends "base.html" %}
-{% block title %}Official Discord Process | PrimeHarbour{% endblock %}
-
+{% block title %}Official Discord | PrimeHarbour{% endblock %}
 {% block head %}
 <style>
-.ph-discord-process{background:#0b0e0c;color:#eee9de;min-height:100vh}
-.phdp-wrap{width:min(1180px,calc(100% - 36px));margin:0 auto}
-.phdp-hero{position:relative;overflow:hidden;padding:86px 0 72px;border-bottom:1px solid rgba(210,174,108,.2);
-background:
-radial-gradient(circle at 82% 18%,rgba(208,171,101,.17),transparent 29%),
-radial-gradient(circle at 12% 78%,rgba(44,77,59,.3),transparent 34%),
-linear-gradient(135deg,#080b09,#121914 55%,#090c0a)}
-.phdp-kicker,.phdp-label{display:inline-block;color:#d4b06c;font-size:10px;font-weight:800;letter-spacing:2.8px;text-transform:uppercase}
-.phdp-hero-grid{display:grid;grid-template-columns:1fr .95fr;gap:48px;align-items:center}
-.phdp-hero h1{font-family:"DM Serif Display",Georgia,serif;font-size:clamp(58px,7vw,104px);line-height:.88;letter-spacing:-3px;margin:18px 0 24px}
-.phdp-hero h1 em{font-style:normal;color:#d8b976}
-.phdp-lead{max-width:690px;color:#adb1a9;font-size:17px;line-height:1.85}
-.phdp-actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:28px}
-.phdp-btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;padding:15px 19px;border:1px solid rgba(211,177,106,.5);
-background:#d2b16f;color:#111;text-decoration:none;font-size:11px;font-weight:800;letter-spacing:.65px;text-transform:uppercase;transition:.2s}
-.phdp-btn:hover{transform:translateY(-2px);filter:brightness(1.04)}
-.phdp-btn.secondary{background:transparent;color:#eee9de}
-.phdp-note{margin-top:18px;color:#767c75;font-size:12px;line-height:1.8}
-.phdp-note strong{color:#d2b16f}
-.phdp-hero-card{border:1px solid rgba(211,177,106,.28);padding:10px;background:#0a0d0b;box-shadow:0 28px 75px rgba(0,0,0,.35)}
-.phdp-hero-card img{display:block;width:100%;aspect-ratio:16/9;object-fit:cover}
-.phdp-caption{padding:12px 14px;background:#101512;color:#d8c18d;font-size:9px;font-weight:800;letter-spacing:2px;text-transform:uppercase}
-
-.phdp-section{padding:86px 0;border-bottom:1px solid rgba(255,255,255,.07)}
-.phdp-light{background:#ece6d8;color:#1a1a17}
-.phdp-dark{background:#0b0e0c;color:#eee9de}
-.phdp-heading{display:grid;grid-template-columns:.95fr 1.05fr;gap:48px;align-items:end;margin-bottom:42px}
-.phdp-heading h2{font-family:"DM Serif Display",Georgia,serif;font-size:clamp(48px,5.8vw,78px);line-height:.92;letter-spacing:-2px;margin:12px 0 0}
-.phdp-heading h2 span{color:#c9a560}
-.phdp-heading p{color:#73746d;font-size:15px;line-height:1.85;margin:0}
-.phdp-dark .phdp-heading p{color:#969a93}
-
-.phdp-flow{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
-.phdp-step{border:1px solid rgba(25,25,22,.14);background:rgba(255,255,255,.28);padding:25px;min-height:295px}
-.phdp-step-num{font-size:10px;font-weight:900;letter-spacing:2px;color:#b28d4b}
-.phdp-step h3{font-family:"DM Serif Display",Georgia,serif;font-size:34px;line-height:1;margin:54px 0 12px}
-.phdp-step p{color:#6e6d66;font-size:13px;line-height:1.8;margin:0}
-.phdp-dark .phdp-step{border-color:rgba(211,177,106,.16);background:linear-gradient(145deg,#101512,#0d100e)}
-.phdp-dark .phdp-step p{color:#9da19a}
-.phdp-dark .phdp-step h3{color:#eee9de}
-.phdp-mini{margin-top:20px;padding-top:16px;border-top:1px solid rgba(0,0,0,.12);font-size:10px;letter-spacing:1.5px;text-transform:uppercase;color:#8d8269}
-.phdp-dark .phdp-mini{border-top-color:rgba(255,255,255,.08);color:#bda36e}
-
-.phdp-ticket{display:grid;grid-template-columns:1fr .9fr;gap:34px;align-items:start}
-.phdp-ticket-card{border:1px solid rgba(211,177,106,.3);background:linear-gradient(145deg,#121714,#0b0f0d);padding:30px}
-.phdp-ticket-card h3{font-family:"DM Serif Display",Georgia,serif;font-size:46px;line-height:.95;margin:12px 0 12px}
-.phdp-ticket-card p{color:#9b9d96;font-size:13px;line-height:1.8}
-.phdp-invite{padding:12px 14px;border:1px solid rgba(211,177,106,.22);background:#0b0e0c;color:#d9bf83;font:600 12px/1.5 Inter,sans-serif;word-break:break-all;margin:18px 0}
-.phdp-route-list{display:grid;gap:11px;padding:0;margin:20px 0 0;list-style:none}
-.phdp-route-list li{display:flex;gap:11px;color:#aeb1aa;font-size:13px;line-height:1.6}
-.phdp-route-list li::before{content:"✓";color:#d1ac67;font-weight:900}
-
-.phdp-visual-section{background:#070907;color:#eee9de}
-.phdp-example{display:grid;grid-template-columns:1.05fr .95fr;gap:46px;align-items:center;margin-top:32px}
-.phdp-example.reverse{grid-template-columns:.95fr 1.05fr}
-.phdp-example img{display:block;width:100%;max-height:620px;object-fit:contain;border:1px solid rgba(211,177,106,.24);background:#0b0d0c;box-shadow:0 25px 70px rgba(0,0,0,.28)}
-.phdp-example-copy h3{font-family:"DM Serif Display",Georgia,serif;font-size:48px;line-height:.95;margin:12px 0 18px}
-.phdp-example-copy p{color:#9ca099;font-size:15px;line-height:1.9}
-.phdp-example-tag{display:inline-block;padding:7px 9px;border:1px solid rgba(211,177,106,.3);color:#d1ac67;font-size:9px;font-weight:800;letter-spacing:1.8px;text-transform:uppercase}
-.phdp-example-warning{margin-top:17px;padding:12px 14px;border-left:2px solid #d1ac67;color:#777c75;font-size:11px;line-height:1.7}
-
-.phdp-send-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:24px}
-.phdp-send-card{padding:28px;border:1px solid rgba(25,25,22,.13);background:rgba(255,255,255,.28)}
-.phdp-send-card h3{font-family:"DM Serif Display",Georgia,serif;font-size:38px;margin:0 0 14px}
-.phdp-send-card ul{list-style:none;padding:0;margin:0;display:grid;gap:12px}
-.phdp-send-card li{display:flex;gap:12px;color:#696861;font-size:13px;line-height:1.65}
-.phdp-send-card li::before{content:"01";color:#b38f4f;font-size:10px;font-weight:900;letter-spacing:1px;margin-top:2px}
-.phdp-send-card.no li::before{content:"×";color:#a45e54;font-size:15px}
-.phdp-fields{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:18px}
-.phdp-field{padding:14px;border:1px solid rgba(25,25,22,.12);background:rgba(255,255,255,.2)}
-.phdp-field small{display:block;color:#9a8867;font-size:9px;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;margin-bottom:5px}
-.phdp-field span{font-size:13px;color:#4c4c46}
-
-.phdp-timeline{display:grid;gap:0;margin-top:30px;border-top:1px solid rgba(211,177,106,.18)}
-.phdp-timeline-item{display:grid;grid-template-columns:90px 1fr 1fr;gap:25px;padding:26px 0;border-bottom:1px solid rgba(211,177,106,.13);align-items:start}
-.phdp-timeline-item strong{font-size:12px;letter-spacing:1.5px;color:#d1ac67}
-.phdp-timeline-item h3{font-family:"DM Serif Display",Georgia,serif;font-size:29px;margin:0}
-.phdp-timeline-item p{color:#92968f;font-size:13px;line-height:1.8;margin:0}
-
-.phdp-rules{display:grid;grid-template-columns:repeat(2,1fr);gap:18px;margin-top:34px}
-.phdp-rule{border:1px solid rgba(211,177,106,.16);padding:24px;background:#101512}
-.phdp-rule h3{margin:0 0 10px;font-size:16px}
-.phdp-rule p{margin:0;color:#949a92;font-size:12px;line-height:1.8}
-
-.phdp-final{padding:78px 0;background:#d1af6c;color:#151511}
-.phdp-final-grid{display:grid;grid-template-columns:1fr auto;gap:30px;align-items:center}
-.phdp-final h2{font-family:"DM Serif Display",Georgia,serif;font-size:clamp(52px,6vw,82px);line-height:.9;letter-spacing:-2px;margin:12px 0}
-.phdp-final p{color:#625a47;max-width:700px;line-height:1.8;font-size:14px}
-.phdp-final .phdp-btn{background:#171814;color:#eee9de;border-color:#171814}
-
-@media(max-width:900px){
-  .phdp-hero-grid,.phdp-heading,.phdp-ticket,.phdp-example,.phdp-example.reverse,.phdp-send-grid,.phdp-final-grid{grid-template-columns:1fr}
-  .phdp-flow,.phdp-rules{grid-template-columns:1fr}
-  .phdp-timeline-item{grid-template-columns:1fr;gap:8px}
-}
+.ph-discord-page{background:#0b0e0c;color:#eee9de;min-height:100vh}
+.phd-wrap{width:min(1180px,calc(100% - 36px));margin:auto}
+.phd-hero{position:relative;overflow:hidden;border-bottom:1px solid rgba(210,174,108,.22);background:radial-gradient(circle at 78% 20%,rgba(202,166,92,.16),transparent 28%),linear-gradient(135deg,#0a100d,#131b16 55%,#0a0c0b);padding:82px 0 64px}
+.phd-hero-grid{display:grid;grid-template-columns:1.02fr .98fr;gap:46px;align-items:center}
+.phd-kicker,.phd-label{display:inline-block;font-size:10px;font-weight:800;letter-spacing:2.8px;text-transform:uppercase;color:#d1ac67}
+.phd-hero h1{font-family:"DM Serif Display",Georgia,serif;font-size:clamp(58px,7vw,102px);line-height:.9;letter-spacing:-3px;margin:18px 0 22px}
+.phd-hero h1 em{font-style:normal;color:#d8b876}
+.phd-lead{max-width:640px;color:#b9b8af;font-size:17px;line-height:1.8}
+.phd-actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:28px}
+.phd-btn{display:inline-flex;align-items:center;justify-content:center;gap:12px;padding:15px 20px;border:1px solid rgba(211,177,106,.55);text-decoration:none;font-weight:800;letter-spacing:.5px;font-size:12px;text-transform:uppercase;transition:.2s;background:#d2b16f;color:#111}
+.phd-btn:hover{transform:translateY(-2px);filter:brightness(1.04)}
+.phd-btn.secondary{background:transparent;color:#eee9de}
+.phd-note{margin-top:20px;color:#7f867e;font-size:12px;line-height:1.7}
+.phd-visual{position:relative;border:1px solid rgba(211,177,106,.28);padding:10px;background:#0b0f0d;box-shadow:0 30px 80px rgba(0,0,0,.35)}
+.phd-visual img{display:block;width:100%;aspect-ratio:16/9;object-fit:cover}
+.phd-visual::after{content:"OFFICIAL TICKET ROUTE · #OPEN-TICKET";position:absolute;bottom:22px;left:22px;right:22px;padding:11px 13px;background:rgba(7,9,8,.76);border:1px solid rgba(211,177,106,.28);font-size:9px;letter-spacing:2px;font-weight:800;color:#ddc28c}
+.phd-section{padding:88px 0;border-bottom:1px solid rgba(255,255,255,.07)}
+.phd-light{background:#ece6d8;color:#181816}
+.phd-dark{background:#0b0e0c;color:#eee9de}
+.phd-heading{display:grid;grid-template-columns:.9fr 1.1fr;gap:50px;align-items:end;margin-bottom:42px}
+.phd-heading h2{font-family:"DM Serif Display",Georgia,serif;font-size:clamp(48px,6vw,78px);line-height:.92;letter-spacing:-2px;margin:14px 0 0}
+.phd-heading h2 span{color:#bd9450}
+.phd-heading p{font-size:16px;line-height:1.8;color:#76756e;margin:0}
+.phd-dark .phd-heading p{color:#9b9d96}
+.phd-step-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}
+.phd-step{border:1px solid rgba(24,24,22,.16);background:rgba(255,255,255,.28);padding:18px}
+.phd-dark .phd-step{border-color:rgba(211,177,106,.2);background:#111512}
+.phd-step-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:18px}
+.phd-num{font-size:12px;letter-spacing:2px;color:#bd9450;font-weight:900}
+.phd-type{font-size:9px;letter-spacing:1.8px;text-transform:uppercase;color:#8f8a7e;font-weight:800}
+.phd-step h3{font-family:"DM Serif Display",Georgia,serif;font-size:34px;margin:0 0 9px}
+.phd-step p{color:#6e6c65;line-height:1.7;font-size:14px;margin:0 0 17px}
+.phd-dark .phd-step p{color:#999d95}
+.phd-screen{overflow:hidden;border:1px solid rgba(24,24,22,.16);background:#111}
+.phd-screen img{display:block;width:100%;height:235px;object-fit:cover}
+.phd-screen-caption{padding:9px 11px;background:#111512;color:#bab9b1;font-size:10px;letter-spacing:.8px}
+.phd-rule-grid{display:grid;grid-template-columns:repeat(2,1fr);border-top:1px solid rgba(24,24,22,.16)}
+.phd-dark .phd-rule-grid{border-color:rgba(211,177,106,.18)}
+.phd-rule{padding:27px 24px;border-right:1px solid rgba(24,24,22,.16);border-bottom:1px solid rgba(24,24,22,.16)}
+.phd-rule:nth-child(2n){border-right:0}.phd-dark .phd-rule{border-color:rgba(211,177,106,.18)}
+.phd-rule h3{font-family:"DM Serif Display",Georgia,serif;font-size:27px;margin:0 0 8px}.phd-rule p{font-size:14px;line-height:1.75;color:#6e6c65;margin:0}.phd-dark .phd-rule p{color:#9d9e98}
+.phd-warning{display:grid;grid-template-columns:auto 1fr;gap:16px;align-items:start;margin-top:28px;padding:22px;border:1px solid rgba(155,116,55,.35);background:rgba(193,149,78,.08)}
+.phd-warning strong{font-size:11px;letter-spacing:1.8px;text-transform:uppercase;color:#c49d5a}.phd-warning p{margin:0;color:#8d8a81;font-size:13px;line-height:1.75}
+.phd-ticket{display:grid;grid-template-columns:1fr .8fr;gap:34px;align-items:center}
+.phd-ticket-card{border:1px solid rgba(211,177,106,.3);background:linear-gradient(145deg,#121714,#0b0f0d);padding:30px}
+.phd-ticket-card h3{font-family:"DM Serif Display",Georgia,serif;font-size:44px;line-height:1;margin:12px 0 14px}.phd-ticket-card p{color:#9d9f98;line-height:1.75;font-size:14px}
+.phd-copy-list{display:grid;gap:11px;margin:20px 0 0;padding:0;list-style:none}.phd-copy-list li{display:flex;gap:10px;color:#b2b1a9;font-size:13px;line-height:1.6}.phd-copy-list li::before{content:"✓";color:#d0aa69;font-weight:900}
+.phd-legal{font-size:11px;line-height:1.75;color:#76756f;margin-top:25px}
+.phd-footer-cta{padding:82px 0;background:#d1af6c;color:#151511}.phd-footer-cta .phd-heading{margin:0;align-items:center}.phd-footer-cta .phd-heading h2{font-size:clamp(48px,6vw,76px)}.phd-footer-cta .phd-heading p{color:#5e563f}.phd-footer-cta .phd-btn{background:#171814;color:#eee9de;border-color:#171814}
+@media(max-width:850px){.phd-hero-grid,.phd-heading,.phd-ticket{grid-template-columns:1fr}.phd-step-grid,.phd-rule-grid{grid-template-columns:1fr}.phd-rule{border-right:0}.phd-hero h1{letter-spacing:-2px}.phd-section{padding:64px 0}}
 </style>
 {% endblock %}
-
 {% block content %}
-<div class="ph-discord-process">
-
-  <section class="phdp-hero">
-    <div class="phdp-wrap phdp-hero-grid">
+<div class="ph-discord-page">
+  <section class="phd-hero">
+    <div class="phd-wrap phd-hero-grid">
       <div>
-        <span class="phdp-kicker">PRIMEHARBOUR · OFFICIAL COMMUNITY</span>
+        <span class="phd-kicker">PRIMEHARBOUR · OFFICIAL COMMUNITY</span>
         <h1>From the website<br><em>to your ticket.</em></h1>
-        <p class="phdp-lead">
-          A simple visual guide to the PrimeHarbour Discord journey: enter through the official invite,
-          verify the server, find the designated ticket route, send the requested information, review the
-          written terms, and wait for the team to respond through the ticket.
-        </p>
-        <div class="phdp-actions">
-          <a class="phdp-btn" href="{{ discord_link }}" target="_blank" rel="noopener">Open official Discord ↗</a>
-          <a class="phdp-btn secondary" href="#ticket">See where to open a ticket</a>
+        <p class="phd-lead">A simple guide to the actual PrimeHarbour Discord route: join the official server, open <strong>#open-ticket</strong>, choose <strong>Invest with Us</strong>, and continue the review inside your private ticket.</p>
+        <div class="phd-actions">
+          <a class="phd-btn" href="{{ discord_link or 'https://discord.gg/Hm5V2bNxeq' }}" target="_blank" rel="noopener">Open official Discord ↗</a>
+          <button class="phd-btn secondary" type="button" id="copyInvite">Copy invite link</button>
         </div>
-        <p class="phdp-note">
-          <strong>Official invite:</strong> {{ discord_link }}
-          · Never use an invite received from an unrelated account or an unsolicited direct message.
-        </p>
+        <p class="phd-note"><strong>Official invite:</strong> https://discord.gg/Hm5V2bNxeq<br>After joining, use only the published <strong>#open-ticket</strong> route for the PrimeHarbour review process.</p>
       </div>
-
-      <figure class="phdp-hero-card">
-        <img src="{{ url_for('static', filename='images/discord-process-hero.png') }}" alt="PrimeHarbour Discord process visual" loading="eager">
-        <figcaption class="phdp-caption">PRIMEHARBOUR · OFFICIAL DISCORD PROCESS</figcaption>
-      </figure>
+      <figure class="phd-visual"><img src="{{ url_for('static', filename='images/primeharbour-ticket-guide-hero.png') }}" alt="PrimeHarbour ticket guide"></figure>
     </div>
   </section>
 
-  <section class="phdp-section phdp-light" id="route">
-    <div class="phdp-wrap">
-      <div class="phdp-heading">
-        <div>
-          <span class="phdp-label">THE COMPLETE ROUTE</span>
-          <h2>Five moves.<br><span>One clear path.</span></h2>
-        </div>
-        <p>
-          Keep every important step inside the published route. The Discord server is a communication and review
-          channel; the applicable written agreement remains the reference for final terms and eligibility.
-        </p>
+  <section class="phd-section phd-light" id="process">
+    <div class="phd-wrap">
+      <div class="phd-heading">
+        <div><span class="phd-label">THE ACTUAL ROUTE</span><h2>Five moves.<br><span>One clear path.</span></h2></div>
+        <p>The public website explains the structure. Discord is the communication route. Your ticket keeps the account, pricing, agreement and follow-up conversation together in one private place.</p>
       </div>
 
-      <div class="phdp-flow">
-        <article class="phdp-step">
-          <div class="phdp-step-num">01 · WEBSITE</div>
+      <div class="phd-step-grid">
+        <article class="phd-step">
+          <div class="phd-step-top"><span class="phd-num">01</span><span class="phd-type">WEBSITE</span></div>
           <h3>Read first.</h3>
-          <p>Review the one-month term, displayed percentages, risk information, eligibility conditions and agreement information before entering Discord.</p>
-          <div class="phdp-mini">Start from PrimeHarbour</div>
+          <p>Review the Investment Desk, the displayed terms, risk information and applicable agreement information before entering Discord.</p>
+          <div class="phd-screen"><img src="{{ url_for('static', filename='images/primeharbour-ticket-guide-home.png') }}" alt="PrimeHarbour website ticket guide"><div class="phd-screen-caption">STEP 01 · REVIEW THE WEBSITE FIRST</div></div>
         </article>
 
-        <article class="phdp-step">
-          <div class="phdp-step-num">02 · DISCORD</div>
+        <article class="phd-step">
+          <div class="phd-step-top"><span class="phd-num">02</span><span class="phd-type">DISCORD</span></div>
           <h3>Join the server.</h3>
-          <p>Use the official published invite and confirm the server identity before interacting with channels, bots or members.</p>
-          <div class="phdp-mini">Verify before you continue</div>
+          <p>Use the official PrimeHarbour invite and confirm that you are inside the intended server before interacting with members or bots.</p>
+          <div class="phd-screen"><img src="{{ url_for('static', filename='images/primeharbour-ticket-guide-server.png') }}" alt="PrimeHarbour Discord server"><div class="phd-screen-caption">STEP 02 · OFFICIAL PRIMEHARBOUR SERVER</div></div>
         </article>
 
-        <article class="phdp-step">
-          <div class="phdp-step-num">03 · TICKET</div>
-          <h3>Open your ticket.</h3>
-          <p>Use the designated ticket/support channel for participation, account, agreement, payment or settlement questions.</p>
-          <div class="phdp-mini">Keep the conversation in-ticket</div>
+        <article class="phd-step">
+          <div class="phd-step-top"><span class="phd-num">03</span><span class="phd-type">OPEN TICKET</span></div>
+          <h3>Go to #open-ticket.</h3>
+          <p>Open the <strong>#open-ticket</strong> channel and use the ticket panel provided by Ticket Tool. Select <strong>Invest with Us</strong> to start the private route.</p>
+          <div class="phd-screen"><img src="{{ url_for('static', filename='images/primeharbour-open-ticket.png') }}" alt="PrimeHarbour open-ticket channel"><div class="phd-screen-caption">STEP 03 · #OPEN-TICKET → INVEST WITH US</div></div>
         </article>
 
-        <article class="phdp-step">
-          <div class="phdp-step-num">04 · REVIEW</div>
-          <h3>Send the details.</h3>
-          <p>Provide only the information reasonably requested for your review. Check your name, email and requested amount before sending.</p>
-          <div class="phdp-mini">No passwords or OTPs</div>
+        <article class="phd-step">
+          <div class="phd-step-top"><span class="phd-num">04</span><span class="phd-type">PRIVATE TICKET</span></div>
+          <h3>Your private ticket opens.</h3>
+          <p>Ticket Tool creates a private ticket channel for the request. Continue the conversation there instead of sending account or payment details through random DMs.</p>
+          <div class="phd-screen"><img src="{{ url_for('static', filename='images/primeharbour-private-ticket.png') }}" alt="PrimeHarbour private ticket"><div class="phd-screen-caption">STEP 04 · PRIVATE TICKET CHANNEL</div></div>
         </article>
 
-        <article class="phdp-step">
-          <div class="phdp-step-num">05 · AGREEMENT</div>
-          <h3>Read & decide.</h3>
-          <p>The team can respond in the ticket and provide the applicable written terms. Review them before taking any payment step.</p>
-          <div class="phdp-mini">Agreement before payment</div>
+        <article class="phd-step">
+          <div class="phd-step-top"><span class="phd-num">05</span><span class="phd-type">REVIEW</span></div>
+          <h3>Review the details.</h3>
+          <p>Use the ticket for the current pricing/amount, agreement questions, payment instructions, settlement questions and required follow-up. The applicable written agreement controls the final terms.</p>
+          <div class="phd-screen"><img src="{{ url_for('static', filename='images/primeharbour-ticket-conversation.png') }}" alt="PrimeHarbour ticket conversation"><div class="phd-screen-caption">STEP 05 · KEEP THE REQUEST TOGETHER</div></div>
         </article>
 
-        <article class="phdp-step">
-          <div class="phdp-step-num">06 · RECORDS</div>
-          <h3>Keep everything.</h3>
-          <p>Keep your request reference, agreement version, ticket history, payment receipt and any official confirmation for your records.</p>
-          <div class="phdp-mini">Keep your own copies</div>
+        <article class="phd-step">
+          <div class="phd-step-top"><span class="phd-num">06</span><span class="phd-type">RECORDS</span></div>
+          <h3>Keep the reference.</h3>
+          <p>Keep the ticket history, agreement version, payment receipt and official confirmation so the request and later settlement can be reconciled.</p>
+          <div class="phd-screen"><img src="{{ url_for('static', filename='images/primeharbour-ticket-records.png') }}" alt="PrimeHarbour ticket record"><div class="phd-screen-caption">STEP 06 · KEEP YOUR OFFICIAL RECORDS</div></div>
         </article>
       </div>
     </div>
   </section>
 
-  <section class="phdp-section phdp-dark" id="ticket">
-    <div class="phdp-wrap phdp-ticket">
-      <div>
-        <span class="phdp-label">WHERE TO OPEN IT</span>
-        <h2 style="font-family:'DM Serif Display',Georgia,serif;font-size:clamp(48px,6vw,82px);line-height:.9;letter-spacing:-2px;margin:14px 0 18px">
-          Find the<br><span style="color:#d1ac67">ticket route.</span>
-        </h2>
-        <p style="color:#9a9e97;max-width:670px;line-height:1.9;font-size:15px">
-          Once you enter the official server, look for the channel or panel designated for support,
-          participation or open-ticket requests. Use that route instead of sending investment or payment
-          details to random members by direct message.
-        </p>
-
-        <div class="phdp-route-list">
-          <li>Open the ticket from the server's designated ticket panel.</li>
-          <li>Choose the category that matches your request.</li>
-          <li>Complete the ticket form or message shown by the server.</li>
-          <li>Wait for a response inside the ticket thread.</li>
-        </div>
+  <section class="phd-section phd-dark">
+    <div class="phd-wrap">
+      <div class="phd-heading">
+        <div><span class="phd-label">PRICING & REVIEW</span><h2>Ask inside<br><span>the ticket.</span></h2></div>
+        <p>The website can explain the structure and displayed figures, while the ticket provides a single place to clarify the current amount, applicable terms and the next step. Do not treat a Discord message by itself as a substitute for the written agreement.</p>
       </div>
 
-      <div class="phdp-ticket-card">
-        <span class="phdp-label">OFFICIAL INVITE</span>
-        <h3>PrimeHarbour<br>Discord</h3>
-        <div class="phdp-invite">{{ discord_link }}</div>
-        <a class="phdp-btn" href="{{ discord_link }}" target="_blank" rel="noopener">Open Discord ↗</a>
-        <ul class="phdp-route-list">
-          <li>Use the official invite.</li>
-          <li>Confirm the server identity.</li>
-          <li>Use the designated ticket route.</li>
-          <li>Keep payment and agreement matters in the official process.</li>
+      <div class="phd-rule-grid">
+        <article class="phd-rule"><h3>Current amount</h3><p>Check the Investment Desk for the figures currently displayed on the website. If you need clarification about the amount applicable to your request, ask inside the official ticket.</p></article>
+        <article class="phd-rule"><h3>One-month term</h3><p>The public site presents a one-month capital term. The exact contractual treatment is governed by the applicable written agreement and eligibility conditions.</p></article>
+        <article class="phd-rule"><h3>Agreement first</h3><p>Before payment or participation, read the applicable written agreement and confirm the amount, conditions, eligibility and settlement treatment.</p></article>
+        <article class="phd-rule"><h3>No random DMs</h3><p>Keep account, agreement, payment and settlement questions inside the designated official route. Do not follow payment changes or urgent requests from unrelated accounts.</p></article>
+      </div>
+
+      <div class="phd-warning"><div><strong>Security rule</strong></div><p>PrimeHarbour should never ask for your Discord password, OTP, private key or seed phrase. If a message looks unexpected or asks you to move the conversation to an unrelated account, stop and verify through the official route.</p></div>
+    </div>
+  </section>
+
+  <section class="phd-section phd-light" id="rules">
+    <div class="phd-wrap">
+      <div class="phd-heading">
+        <div><span class="phd-label">TICKET RULES</span><h2>Keep it clear.<br><span>Keep it official.</span></h2></div>
+        <p>The ticket is a communication and review channel. The applicable written agreement remains the reference for final terms, eligibility and settlement treatment.</p>
+      </div>
+
+      <div class="phd-rule-grid">
+        <article class="phd-rule"><h3>01 · Official server</h3><p>Enter through the published PrimeHarbour Discord invite and check the server identity before continuing.</p></article>
+        <article class="phd-rule"><h3>02 · #open-ticket</h3><p>Use the designated <strong>#open-ticket</strong> channel and the <strong>Invest with Us</strong> button shown by Ticket Tool.</p></article>
+        <article class="phd-rule"><h3>03 · Private channel</h3><p>Once the ticket opens, keep the relevant request and follow-up information inside that ticket.</p></article>
+        <article class="phd-rule"><h3>04 · Written terms</h3><p>Review the applicable written agreement before making a payment or treating any terms as final.</p></article>
+        <article class="phd-rule"><h3>05 · Records</h3><p>Save the agreement version, ticket reference, payment receipt and official confirmation.</p></article>
+        <article class="phd-rule"><h3>06 · Risk</h3><p>Market activity can involve losses. Displayed percentages or examples are not guarantees of future performance.</p></article>
+      </div>
+
+      <p class="phd-legal">This page is a communication template, not legal advice. Before using the platform to solicit or accept funds, obtain advice for the jurisdictions in which PrimeHarbour will operate. The applicable written agreement controls final contractual terms.</p>
+    </div>
+  </section>
+
+  <section class="phd-section phd-dark">
+    <div class="phd-wrap phd-ticket">
+      <div>
+        <span class="phd-label">YOUR NEXT STEP</span>
+        <h2 style="font-family:'DM Serif Display',Georgia,serif;font-size:clamp(48px,6vw,78px);line-height:.92;letter-spacing:-2px;margin:16px 0 18px">Open the<br><span style="color:#d1ac67">official ticket.</span></h2>
+        <p style="color:#9b9d96;max-width:650px;line-height:1.8">Join the official PrimeHarbour Discord, open <strong>#open-ticket</strong>, choose <strong>Invest with Us</strong>, and continue the review inside the private ticket.</p>
+      </div>
+      <div class="phd-ticket-card">
+        <span class="phd-label">OFFICIAL ROUTE</span>
+        <h3>#open-ticket</h3>
+        <p>Ticket Tool → <strong>Invest with Us</strong> → private ticket → review details.</p>
+        <a class="phd-btn" href="{{ discord_link or 'https://discord.gg/Hm5V2bNxeq' }}" target="_blank" rel="noopener">Open Discord ↗</a>
+        <ul class="phd-copy-list">
+          <li>Use the official PrimeHarbour server.</li>
+          <li>Open #open-ticket.</li>
+          <li>Select Invest with Us.</li>
+          <li>Continue inside the private ticket.</li>
         </ul>
       </div>
     </div>
   </section>
 
-  <section class="phdp-section phdp-visual-section">
-    <div class="phdp-wrap">
-      <div class="phdp-heading">
-        <div>
-          <span class="phdp-label">VISUAL EXAMPLES</span>
-          <h2>See how a<br><span>Discord workflow reads.</span></h2>
-        </div>
-        <p>
-          The screenshots below are examples of Discord channel/thread presentation supplied for this guide.
-          They are visual references, not screenshots of the PrimeHarbour server itself.
-        </p>
-      </div>
-
-      <div class="phdp-example">
-        <img src="{{ url_for('static', filename='images/discord-example-thread.png') }}" alt="Example Discord thread and updates" loading="lazy">
-        <div class="phdp-example-copy">
-          <span class="phdp-example-tag">EXAMPLE · CHANNEL → THREAD</span>
-          <h3>Keep the conversation attached to the request.</h3>
-          <p>
-            A useful Discord workflow keeps updates inside the relevant channel or thread, so the original
-            request, responses and follow-up information remain together. For PrimeHarbour, the same principle
-            can be used for a participation ticket: open the ticket, describe your request, then continue with
-            the support/review team in that ticket.
-          </p>
-          <p class="phdp-example-warning">
-            This screenshot contains another server's branding and example trading content. It is shown only to
-            explain the interface concept and should not be represented as PrimeHarbour's own server activity.
-          </p>
-        </div>
-      </div>
-
-      <div class="phdp-example reverse">
-        <div class="phdp-example-copy">
-          <span class="phdp-example-tag">EXAMPLE · STRUCTURED UPDATE</span>
-          <h3>One thread. Clear updates. Easy history.</h3>
-          <p>
-            The example shows how a Discord thread can keep an opening message and later updates together.
-            For a PrimeHarbour ticket, the team can use the same readable structure: request received,
-            information needed, review status, agreement shared, and final confirmation.
-          </p>
-          <p class="phdp-example-warning">
-            The values and names visible in the supplied screenshot belong to the example server. Replace this
-            visual with your own PrimeHarbour server screenshot when you have one.
-          </p>
-        </div>
-        <img src="{{ url_for('static', filename='images/discord-example-signal.png') }}" alt="Example Discord structured update thread" loading="lazy">
-      </div>
+  <section class="phd-footer-cta">
+    <div class="phd-wrap phd-heading">
+      <div><span class="phd-label" style="color:#62563e">PRIMEHARBOUR</span><h2>Read first.<br>Then decide.</h2></div>
+      <div><p>Official Discord · #open-ticket · Private review · Written terms</p><div class="phd-actions"><a class="phd-btn" href="{{ url_for('home') }}">Return home</a><a class="phd-btn" href="{{ url_for('about') }}">Meet the founders</a></div></div>
     </div>
   </section>
-
-  <section class="phdp-section phdp-light" id="send">
-    <div class="phdp-wrap">
-      <div class="phdp-heading">
-        <div>
-          <span class="phdp-label">WHAT TO SEND</span>
-          <h2>Give the team<br><span>the useful details.</span></h2>
-        </div>
-        <p>
-          Send the minimum information needed for the review. Do not send credentials or security codes.
-          The exact documents and fields, if any, should be requested through the applicable official process.
-        </p>
-      </div>
-
-      <div class="phdp-send-grid">
-        <article class="phdp-send-card">
-          <h3>Usually useful for a review.</h3>
-          <ul>
-            <li>Full name</li>
-            <li>PrimeHarbour website username, if you have one</li>
-            <li>Email address used for the request</li>
-            <li>Requested participation amount</li>
-            <li>Country / preferred display currency, where requested</li>
-            <li>Short description of what you need help with</li>
-          </ul>
-
-          <div class="phdp-fields">
-            <div class="phdp-field"><small>Example</small><span>Full name</span></div>
-            <div class="phdp-field"><small>Example</small><span>Email</span></div>
-            <div class="phdp-field"><small>Example</small><span>Amount</span></div>
-            <div class="phdp-field"><small>Example</small><span>Request type</span></div>
-          </div>
-        </article>
-
-        <article class="phdp-send-card no">
-          <h3>Never send this.</h3>
-          <ul>
-            <li>Discord password</li>
-            <li>Email password</li>
-            <li>One-time passwords / OTPs</li>
-            <li>2FA backup codes</li>
-            <li>Private keys or seed phrases</li>
-            <li>Card PINs or banking passwords</li>
-          </ul>
-        </article>
-      </div>
-    </div>
-  </section>
-
-  <section class="phdp-section phdp-dark">
-    <div class="phdp-wrap">
-      <div class="phdp-heading">
-        <div>
-          <span class="phdp-label">WHAT HAPPENS NEXT</span>
-          <h2>Ticket open.<br><span>Team responds.</span></h2>
-        </div>
-        <p>
-          Keep the ticket open and follow the instructions given there. A Discord conversation should not
-          replace the written agreement or other applicable documentation.
-        </p>
-      </div>
-
-      <div class="phdp-timeline">
-        <div class="phdp-timeline-item">
-          <strong>01</strong>
-          <h3>Request received</h3>
-          <p>Your ticket contains your request and the information you provided.</p>
-        </div>
-        <div class="phdp-timeline-item">
-          <strong>02</strong>
-          <h3>Team review</h3>
-          <p>The team can ask clarifying questions or request information relevant to the review.</p>
-        </div>
-        <div class="phdp-timeline-item">
-          <strong>03</strong>
-          <h3>Terms are provided</h3>
-          <p>Where applicable, the written agreement and conditions should be reviewed before a payment step.</p>
-        </div>
-        <div class="phdp-timeline-item">
-          <strong>04</strong>
-          <h3>You decide</h3>
-          <p>Do not treat a ticket message as a guarantee of approval, returns or acceptance of funds.</p>
-        </div>
-        <div class="phdp-timeline-item">
-          <strong>05</strong>
-          <h3>Confirmation & records</h3>
-          <p>Keep the agreement, ticket history, request reference, receipts and any official confirmation.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="phdp-section phdp-light" id="rules">
-    <div class="phdp-wrap">
-      <div class="phdp-heading">
-        <div>
-          <span class="phdp-label">SERVER & PARTICIPATION RULES</span>
-          <h2>Simple rules.<br><span>Protect your account.</span></h2>
-        </div>
-        <p>
-          These website rules are a practical safety layer. The applicable written agreement and Discord server
-          rules control where they differ.
-        </p>
-      </div>
-
-      <div class="phdp-rules">
-        <article class="phdp-rule">
-          <h3>Use official routes only.</h3>
-          <p>Use the invite and ticket route published by PrimeHarbour. Treat unsolicited DMs and alternative payment instructions as unverified.</p>
-        </article>
-        <article class="phdp-rule">
-          <h3>Never share credentials.</h3>
-          <p>No legitimate review step should require your Discord password, email password, OTP, 2FA backup code, private key or seed phrase.</p>
-        </article>
-        <article class="phdp-rule">
-          <h3>Agreement before payment.</h3>
-          <p>Review the applicable written agreement, eligibility conditions and payment instructions before sending funds.</p>
-        </article>
-        <article class="phdp-rule">
-          <h3>Keep a record.</h3>
-          <p>Save your request ID, ticket history, agreement version, payment receipt and official confirmation.</p>
-        </article>
-        <article class="phdp-rule">
-          <h3>Understand the risk.</h3>
-          <p>Trading and market activity can result in losses. Website examples and displayed percentages are not a guarantee of an outcome.</p>
-        </article>
-        <article class="phdp-rule">
-          <h3>Refund terms are conditional.</h3>
-          <p>Any loss-refund treatment applies only where the applicable written agreement provides for it and its eligibility conditions are met.</p>
-        </article>
-      </div>
-    </div>
-  </section>
-
-  <section class="phdp-final">
-    <div class="phdp-wrap phdp-final-grid">
-      <div>
-        <span class="phdp-label" style="color:#62563e">PRIMEHARBOUR · NEXT STEP</span>
-        <h2>Read first.<br>Open the ticket.<br>Then decide.</h2>
-        <p>
-          Use the official Discord route for questions, review and the applicable next steps.
-          Keep your communication and records in the official process.
-        </p>
-      </div>
-      <div class="phdp-actions">
-        <a class="phdp-btn" href="{{ discord_link }}" target="_blank" rel="noopener">Open Discord ↗</a>
-        <a class="phdp-btn" href="{{ url_for('home') }}">Return home</a>
-      </div>
-    </div>
-  </section>
-
 </div>
+{% endblock %}
+{% block scripts %}
+<script>
+(function(){
+  const link = "https://discord.gg/Hm5V2bNxeq";
+  const btn = document.getElementById('copyInvite');
+  if(btn){btn.addEventListener('click', async function(){
+    try{await navigator.clipboard.writeText(link);btn.textContent='Copied ✓';setTimeout(()=>btn.textContent='Copy invite link',1800)}
+    catch(e){window.prompt('Copy the official Discord invite:',link)}
+  })}
+})();
+</script>
 {% endblock %}
