@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 80 80" role="img" aria-label="PrimePair mark">
+  <rect x="5" y="5" width="70" height="70" rx="2" fill="#151612" stroke="#cdb17a" stroke-width="2"/>
+  <path d="M24 54V25h14.5c8.5 0 13.5 4 13.5 10.8 0 6.9-5.2 11.1-13.8 11.1H30" fill="none" stroke="#e7d8b8" stroke-width="4" stroke-linecap="square"/>
+  <path d="M43 25v29" fill="none" stroke="#cdb17a" stroke-width="4"/>
+  <path d="M47 32l-10 10" fill="none" stroke="#cdb17a" stroke-width="3" opacity=".9"/>
+</svg>

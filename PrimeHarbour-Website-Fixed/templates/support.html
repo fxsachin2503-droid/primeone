@@ -1,0 +1,336 @@
+cat > templates/support.html <<'EOF'
+{% extends "base.html" %}
+
+{% block title %}Support | PrimeHarbour{% endblock %}
+
+{% block head %}
+<style>
+.ph-support-page{
+    background:#0b0e0c;
+    color:#eee9de;
+    min-height:calc(100vh - 90px);
+}
+
+.ph-support-wrap{
+    width:min(1180px,calc(100% - 36px));
+    margin:0 auto;
+}
+
+.ph-support-hero{
+    padding:90px 0 70px;
+    background:
+        radial-gradient(circle at 80% 20%,rgba(205,169,95,.15),transparent 28%),
+        linear-gradient(135deg,#09100c,#111914 58%,#080b09);
+    border-bottom:1px solid rgba(210,174,108,.2);
+}
+
+.ph-support-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:55px;
+    align-items:center;
+}
+
+.ph-support-kicker{
+    display:inline-block;
+    font-size:10px;
+    font-weight:800;
+    letter-spacing:3px;
+    text-transform:uppercase;
+    color:#d1ad68;
+}
+
+.ph-support-hero h1{
+    margin:18px 0 20px;
+    font-family:"DM Serif Display",Georgia,serif;
+    font-size:clamp(56px,7vw,96px);
+    line-height:.92;
+    letter-spacing:-3px;
+}
+
+.ph-support-hero h1 em{
+    color:#d6b674;
+    font-style:normal;
+}
+
+.ph-support-lead{
+    max-width:620px;
+    color:#b7b7ae;
+    font-size:17px;
+    line-height:1.8;
+}
+
+.ph-support-email{
+    display:inline-flex;
+    margin-top:24px;
+    padding:14px 18px;
+    border:1px solid rgba(211,177,106,.35);
+    color:#e6d29d;
+    text-decoration:none;
+    font-size:13px;
+    font-weight:700;
+}
+
+.ph-support-card{
+    background:#f0eadc;
+    color:#171916;
+    border:1px solid rgba(210,174,108,.4);
+    padding:30px;
+    box-shadow:0 30px 80px rgba(0,0,0,.35);
+}
+
+.ph-support-card-head{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:24px;
+    padding-bottom:16px;
+    border-bottom:1px solid rgba(20,24,20,.12);
+}
+
+.ph-support-card-head span{
+    font-size:10px;
+    font-weight:800;
+    letter-spacing:2px;
+    text-transform:uppercase;
+}
+
+.ph-support-card-head strong{
+    font-size:12px;
+    color:#9a7a37;
+}
+
+.ph-support-card label{
+    display:block;
+    margin-bottom:17px;
+    font-size:11px;
+    font-weight:800;
+    letter-spacing:1.4px;
+    text-transform:uppercase;
+}
+
+.ph-support-card input,
+.ph-support-card textarea{
+    display:block;
+    width:100%;
+    box-sizing:border-box;
+    margin-top:8px;
+    padding:14px 15px;
+    border:1px solid #d3cbbb;
+    background:#fffdf7;
+    color:#191b18;
+    font:inherit;
+    outline:none;
+}
+
+.ph-support-card input:focus,
+.ph-support-card textarea:focus{
+    border-color:#b08b43;
+    box-shadow:0 0 0 3px rgba(176,139,67,.1);
+}
+
+.ph-support-card textarea{
+    min-height:150px;
+    resize:vertical;
+}
+
+.ph-support-submit{
+    width:100%;
+    margin-top:4px;
+    cursor:pointer;
+}
+
+.ph-support-note{
+    margin:15px 0 0;
+    color:#6f6b61;
+    font-size:11px;
+    line-height:1.7;
+}
+
+.ph-support-info{
+    padding:70px 0;
+    background:#0b0e0c;
+}
+
+.ph-support-info-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:18px;
+}
+
+.ph-support-info-box{
+    padding:26px;
+    border:1px solid rgba(255,255,255,.08);
+    background:rgba(255,255,255,.025);
+}
+
+.ph-support-info-box small{
+    display:block;
+    color:#d1ad68;
+    font-size:9px;
+    font-weight:800;
+    letter-spacing:2px;
+    margin-bottom:12px;
+}
+
+.ph-support-info-box h3{
+    margin:0 0 10px;
+    font-family:"DM Serif Display",Georgia,serif;
+    font-size:26px;
+}
+
+.ph-support-info-box p{
+    margin:0;
+    color:#a8aaa2;
+    line-height:1.75;
+    font-size:14px;
+}
+
+@media (max-width:900px){
+    .ph-support-grid{
+        grid-template-columns:1fr;
+    }
+
+    .ph-support-info-grid{
+        grid-template-columns:1fr;
+    }
+
+    .ph-support-hero{
+        padding:65px 0 45px;
+    }
+}
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="ph-support-page">
+
+    <section class="ph-support-hero">
+        <div class="ph-support-wrap ph-support-grid">
+
+            <div>
+                <span class="ph-support-kicker">PrimeHarbour · Support Desk</span>
+
+                <h1>Questions?<br><em>Start here.</em></h1>
+
+                <p class="ph-support-lead">
+                    Use the official PrimeHarbour support desk for website,
+                    account, agreement, payment, settlement or general
+                    participation questions.
+                </p>
+
+                <a class="ph-support-email"
+                   href="mailto:{{ settings.support_email }}">
+                    {{ settings.support_email }} ↗
+                </a>
+            </div>
+
+            <form class="ph-support-card"
+                  action="{{ url_for('support') }}"
+                  method="post">
+
+                <div class="ph-support-card-head">
+                    <span>Support Request</span>
+                    <strong>01</strong>
+                </div>
+
+                <input
+                    type="text"
+                    name="website"
+                    tabindex="-1"
+                    autocomplete="off"
+                    style="position:absolute;left:-9999px;opacity:0;"
+                >
+
+                <label>
+                    Full name
+                    <input
+                        type="text"
+                        name="name"
+                        autocomplete="name"
+                        maxlength="120"
+                        required
+                    >
+                </label>
+
+                <label>
+                    Email address
+                    <input
+                        type="email"
+                        name="email"
+                        autocomplete="email"
+                        maxlength="160"
+                        required
+                    >
+                </label>
+
+                <label>
+                    Subject
+                    <input
+                        type="text"
+                        name="subject"
+                        maxlength="200"
+                        required
+                    >
+                </label>
+
+                <label>
+                    Message
+                    <textarea
+                        name="message"
+                        maxlength="5000"
+                        required
+                    ></textarea>
+                </label>
+
+                <button class="button button-primary ph-support-submit"
+                        type="submit">
+                    Send support request ↗
+                </button>
+
+                <p class="ph-support-note">
+                    Please do not include passwords, OTPs, 2FA codes,
+                    private keys, seed phrases or other highly sensitive
+                    credentials in your message.
+                </p>
+            </form>
+
+        </div>
+    </section>
+
+    <section class="ph-support-info">
+        <div class="ph-support-wrap ph-support-info-grid">
+
+            <article class="ph-support-info-box">
+                <small>01 · REQUEST</small>
+                <h3>Send the details.</h3>
+                <p>
+                    Tell the team what you need help with and include the
+                    email address you want the reply sent to.
+                </p>
+            </article>
+
+            <article class="ph-support-info-box">
+                <small>02 · REVIEW</small>
+                <h3>Team review.</h3>
+                <p>
+                    Your request is forwarded to the configured PrimeHarbour
+                    support email for review.
+                </p>
+            </article>
+
+            <article class="ph-support-info-box">
+                <small>03 · REPLY</small>
+                <h3>Continue by email.</h3>
+                <p>
+                    Replies are sent to the email address entered in the
+                    support form.
+                </p>
+            </article>
+
+        </div>
+    </section>
+
+</div>
+{% endblock %}
+EOF

@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#0b0d0c">
+  <meta name="description" content="PrimeHarbour — structured participation information, a one-month capital term, founder story and a clear review process.">
+  <title>{% block title %}PrimeHarbour{% endblock %}</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+  {% block head %}{% endblock %}
+</head>
+<body class="primeharbour-site">
+  <div class="page-noise" aria-hidden="true"></div>
+
+  <header class="site-header">
+    <div class="site-wrap nav-row">
+      <a href="{{ url_for('home') }}" class="brand" aria-label="PrimeHarbour home">
+        <img class="brand-logo" src="{{ url_for('static', filename='images/primeharbour-logo.png') }}" alt="PrimeHarbour">
+        <span class="brand-name">PRIME<span>HARBOUR</span></span>
+      </a>
+
+      <nav class="desktop-nav" aria-label="Primary navigation">
+        <a href="{{ url_for('home') }}">HOME</a>
+        <a href="{{ url_for('invest') }}">INVESTMENT DESK</a>
+        <a href="{{ url_for('home') }}#process">HOW IT WORKS</a>
+        <a href="{{ url_for('about') }}">ABOUT</a>
+        <a href="{{ url_for('home') }}#faq">FAQ</a>
+        <a href="{{ url_for('discord') }}">DISCORD</a>
+        <a href="{{ url_for('support') }}">SUPPORT</a>
+      </nav>
+
+      <div class="nav-actions">
+        {% if current_username %}
+          {% if current_is_admin %}
+            <a class="nav-text" href="{{ url_for('admin') }}">ADMIN</a>
+          {% endif %}
+          <a class="nav-text" href="{{ url_for('logout') }}">SIGN OUT</a>
+        {% else %}
+          <a class="nav-text" href="{{ url_for('login') }}">SIGN IN</a>
+        {% endif %}
+        <a class="nav-button" href="{{ url_for('invest') }}#participate">START REVIEW <span>↗</span></a>
+      </div>
+
+      <button class="mobile-menu-button" type="button" aria-label="Open navigation" onclick="document.body.classList.toggle('nav-open')">☰</button>
+    </div>
+
+    <div class="mobile-nav">
+      <a href="{{ url_for('home') }}">HOME</a>
+      <a href="{{ url_for('invest') }}">INVESTMENT DESK</a>
+      <a href="{{ url_for('home') }}#process">HOW IT WORKS</a>
+      <a href="{{ url_for('about') }}">ABOUT</a>
+      <a href="{{ url_for('home') }}#faq">FAQ</a>
+      <a href="{{ url_for('discord') }}">DISCORD</a>
+      <a href="{{ url_for('support') }}">SUPPORT</a>
+      <a href="{{ url_for('invest') }}#participate">START REVIEW ↗</a>
+    </div>
+  </header>
+
+  {% if settings.announcement %}
+    <div class="ph-announcement">
+      <div class="site-wrap"><span>ANNOUNCEMENT</span>{{ settings.announcement }}</div>
+    </div>
+  {% endif %}
+
+  {% with messages = get_flashed_messages() %}
+    {% if messages %}
+      <div class="flash-container" aria-live="polite">
+        {% for message in messages %}
+          <div class="flash-message">{{ message }}</div>
+        {% endfor %}
+      </div>
+    {% endif %}
+  {% endwith %}
+
+  <main>{% block content %}{% endblock %}</main>
+
+  <footer class="site-footer">
+    <div class="site-wrap footer-main">
+      <div>
+        <div class="footer-brand">PRIME<span>HARBOUR</span></div>
+        <p>Investment participation · One-month term · Structured review process</p>
+      </div>
+      <div class="footer-links">
+        <a href="{{ url_for('home') }}">Home</a>
+        <a href="{{ url_for('invest') }}">Investment</a>
+        <a href="{{ url_for('about') }}">About</a>
+        <a href="{{ url_for('discord') }}">Discord</a>
+        <a href="{{ url_for('support') }}">Support</a>
+      </div>
+    </div>
+
+    <div class="site-wrap footer-legal">
+      <span>© {{ current_year }} PrimeHarbour. All rights reserved.</span>
+      <span>Participation is subject to the applicable written terms.</span>
+    </div>
+
+    <div class="site-wrap pp-micro-risk">
+      Trading and market activity involves financial risk. Any displayed capital-share or loss-refund treatment is subject to eligibility and the applicable written agreement.
+    </div>
+  </footer>
+
+  {% block scripts %}{% endblock %}
+</body>
+</html>

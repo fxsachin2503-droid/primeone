@@ -1,0 +1,17 @@
+{
+  "settings": {
+    "announcement": "",
+    "monthly_growth": "",
+    "monthly_slides": "JAN |  +7%\r\nFEB |  +1.4%\r\nMAR |  +5%\r\nAPR |  —\r\nMAY |  +4%\r\nJUN |  —\r\nJUL |  —\r\nAUG |  +7.2%\r\nSEP |  +5%",
+    "profit_share": 40,
+    "loss_refund": 40,
+    "discord_link": "https://discord.gg/Hm5V2bNxeq",
+    "discord_ticket_url": "",
+    "support_email": "support@primeharbour.com",
+    "agreement_version": "1.0",
+    "policy_text": "Trading and market activity involves significant risk.\r\n\r\nPrimeHarbour uses a structured profit-sharing model. Where the applicable written agreement provides for it, eligible realized profits are allocated according to the agreed participant profit-share percentage shown on the website at the time of the request.\r\n\r\nPrimeHarbour also provides a loss-refund policy for qualifying losses, where applicable. Eligibility, calculation method, maximum applicable amount, timing, exclusions and documentation requirements are governed by the written agreement.\r\n\r\nBefore participating, review the complete agreement, understand the risks and verify the applicable terms.",
+    "tagline": "Invest Smarter. Live Better."
+  },
+  "users": [],
+  "investment_requests": []
+}

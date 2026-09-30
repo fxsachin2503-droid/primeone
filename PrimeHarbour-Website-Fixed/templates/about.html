@@ -1,0 +1,2986 @@
+{% extends "base.html" %}
+
+{% block title %}About | PrimeHarbour{% endblock %}
+
+{% block content %}
+
+<style>
+
+/* =========================================================
+   PRIMEHARBOUR — ABOUT PAGE
+   ========================================================= */
+
+.pp-about-page {
+
+    --dark: #07111f;
+    --dark-2: #0b1b30;
+    --dark-3: #101b2a;
+
+    --paper: #eee8dc;
+    --paper-2: #f7f1e5;
+
+    --white: #f4f8fc;
+    --muted: #8b98a6;
+
+    --ink: #191816;
+    --ink-muted: #706a60;
+
+    --gold: #d3b273;
+    --gold-dark: #9c7c4a;
+
+    --blue: #59c4ff;
+
+    --line: rgba(255,255,255,.11);
+    --paper-line: #d1c7b6;
+
+    position: relative;
+    min-height: 100vh;
+
+    background: var(--paper);
+    color: var(--ink);
+
+    overflow: hidden;
+}
+
+
+/* =========================================================
+   WRAPPER
+   ========================================================= */
+
+.pp-about-wrap {
+
+    position: relative;
+    z-index: 2;
+
+    width:
+        min(
+            1160px,
+            calc(100% - 44px)
+        );
+
+    margin: 0 auto;
+}
+
+
+/* =========================================================
+   LABEL
+   ========================================================= */
+
+.pp-label {
+
+    display: inline-block;
+
+    font-size: 8px;
+    font-weight: 800;
+
+    letter-spacing: 2.3px;
+
+    text-transform: uppercase;
+}
+
+
+/* =========================================================
+   HERO
+   ========================================================= */
+
+.pp-about-hero {
+
+    position: relative;
+
+    min-height: 520px;
+
+    display: flex;
+    align-items: center;
+
+    overflow: hidden;
+
+    background:
+
+        radial-gradient(
+            circle at 82% 15%,
+            rgba(72,188,255,.18),
+            transparent 28%
+        ),
+
+        radial-gradient(
+            circle at 17% 82%,
+            rgba(125,70,255,.10),
+            transparent 28%
+        ),
+
+        linear-gradient(
+            135deg,
+            #07111f,
+            #0b1a2d 55%,
+            #101824
+        );
+
+    color: var(--white);
+}
+
+
+.pp-about-hero::before {
+
+    content: "";
+
+    position: absolute;
+
+    inset: 0;
+
+    background:
+
+        linear-gradient(
+            rgba(255,255,255,.022) 1px,
+            transparent 1px
+        ),
+
+        linear-gradient(
+            90deg,
+            rgba(255,255,255,.022) 1px,
+            transparent 1px
+        );
+
+    background-size:
+        52px 52px;
+
+    opacity:
+        .46;
+
+    pointer-events:
+        none;
+}
+
+
+.pp-about-hero::after {
+
+    content: "";
+
+    position: absolute;
+
+    width: 700px;
+    height: 700px;
+
+    right: -280px;
+    top: -240px;
+
+    border:
+        1px solid
+        rgba(82,193,255,.18);
+
+    border-radius:
+        50%;
+
+    pointer-events:
+        none;
+}
+
+
+.pp-about-hero-inner {
+
+    min-height:
+        520px;
+
+    display:
+        grid;
+
+    grid-template-columns:
+        1fr
+        .78fr;
+
+    align-items:
+        center;
+
+    gap:
+        70px;
+
+    padding:
+        65px 0;
+}
+
+
+.pp-about-hero .pp-label {
+
+    color:
+        var(--blue);
+}
+
+
+.pp-about-hero h1 {
+
+    margin:
+        13px 0 0;
+
+    max-width:
+        720px;
+
+    font-family:
+        Georgia,
+        "Times New Roman",
+        serif;
+
+    font-size:
+        clamp(
+            58px,
+            7vw,
+            94px
+        );
+
+    font-weight:
+        400;
+
+    line-height:
+        .92;
+
+    letter-spacing:
+        -4px;
+}
+
+
+.pp-about-hero h1 span {
+
+    display:
+        block;
+
+    color:
+        var(--gold);
+}
+
+
+.pp-about-hero-copy {
+
+    max-width:
+        620px;
+
+    margin-top:
+        24px;
+
+    color:
+        #8c98a6;
+
+    font-size:
+        12px;
+
+    line-height:
+        1.9;
+}
+
+
+/* =========================================================
+   HERO GLASS CARD
+   ========================================================= */
+
+.pp-about-glass {
+
+    position:
+        relative;
+
+    min-height:
+        300px;
+
+    padding:
+        27px;
+
+    overflow:
+        hidden;
+
+    border:
+        1px solid
+        rgba(255,255,255,.14);
+
+    border-radius:
+        22px;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(255,255,255,.105),
+            rgba(255,255,255,.035)
+        );
+
+    backdrop-filter:
+        blur(22px);
+
+    -webkit-backdrop-filter:
+        blur(22px);
+
+    box-shadow:
+
+        inset 0 1px 0
+        rgba(255,255,255,.11),
+
+        0 30px 80px
+        rgba(0,0,0,.23);
+}
+
+
+.pp-about-glass::before {
+
+    content:
+        "";
+
+    position:
+        absolute;
+
+    width:
+        350px;
+
+    height:
+        350px;
+
+    right:
+        -130px;
+
+    top:
+        -105px;
+
+    border:
+        1px solid
+        rgba(82,192,255,.22);
+
+    border-radius:
+        50%;
+}
+
+
+.pp-glass-top {
+
+    position:
+        relative;
+
+    z-index:
+        2;
+
+    display:
+        flex;
+
+    justify-content:
+        space-between;
+
+    padding-bottom:
+        14px;
+
+    border-bottom:
+        1px solid
+        rgba(255,255,255,.09);
+
+    color:
+        #748291;
+
+    font-size:
+        7px;
+
+    letter-spacing:
+        1.8px;
+}
+
+
+.pp-glass-content {
+
+    position:
+        relative;
+
+    z-index:
+        2;
+
+    margin-top:
+        50px;
+}
+
+
+.pp-glass-content small {
+
+    display:
+        block;
+
+    color:
+        #7d8997;
+
+    font-size:
+        7px;
+
+    letter-spacing:
+        1.6px;
+}
+
+
+.pp-glass-content strong {
+
+    display:
+        block;
+
+    max-width:
+        370px;
+
+    margin-top:
+        11px;
+
+    color:
+        #f3f7fb;
+
+    font-family:
+        Georgia,
+        "Times New Roman",
+        serif;
+
+    font-size:
+        35px;
+
+    font-weight:
+        400;
+
+    line-height:
+        .98;
+}
+
+
+.pp-glass-bottom {
+
+    position:
+        absolute;
+
+    left:
+        27px;
+
+    right:
+        27px;
+
+    bottom:
+        22px;
+
+    padding-top:
+        13px;
+
+    border-top:
+        1px solid
+        rgba(255,255,255,.08);
+
+    color:
+        #687583;
+
+    font-size:
+        7px;
+
+    letter-spacing:
+        1.2px;
+}
+
+
+/* =========================================================
+   STORY
+   ========================================================= */
+
+.pp-story {
+
+    padding:
+        105px 0;
+
+    background:
+        var(--paper);
+}
+
+
+.pp-story-grid {
+
+    display:
+        grid;
+
+    grid-template-columns:
+        1.05fr
+        .95fr;
+
+    gap:
+        70px;
+
+    align-items:
+        center;
+}
+
+
+/* =========================================================
+   STORY IMAGE
+   ========================================================= */
+
+.pp-story-image-frame {
+
+    position:
+        relative;
+
+    padding:
+        9px;
+
+    background:
+        var(--paper-2);
+
+    border:
+        1px solid
+        #cec4b3;
+
+    border-radius:
+        24px;
+
+    box-shadow:
+        0 28px 75px
+        rgba(38,29,17,.11);
+
+    overflow:
+        hidden;
+}
+
+
+.pp-story-image {
+
+    position:
+        relative;
+
+    z-index:
+        2;
+
+    display:
+        block;
+
+    width:
+        100%;
+
+    aspect-ratio:
+        16 / 9;
+
+    object-fit:
+        cover;
+
+    object-position:
+        center;
+
+    border-radius:
+        17px;
+
+    transition:
+        transform .45s ease,
+        filter .45s ease;
+}
+
+
+.pp-story-image-frame:hover
+.pp-story-image {
+
+    transform:
+        scale(1.015);
+
+    filter:
+        contrast(1.03)
+        saturate(1.03);
+}
+
+
+/* =========================================================
+   STORY IMAGE ERROR
+   ========================================================= */
+
+.pp-photo-error {
+
+    display:
+        none;
+
+    position:
+        absolute;
+
+    inset:
+        0;
+
+    z-index:
+        10;
+
+    align-items:
+        center;
+
+    justify-content:
+        center;
+
+    text-align:
+        center;
+
+    padding:
+        30px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #101c2b,
+            #091321
+        );
+
+    color:
+        #7b8897;
+}
+
+
+.pp-photo-error strong {
+
+    display:
+        block;
+
+    margin-bottom:
+        8px;
+
+    color:
+        #dae3eb;
+
+    font-family:
+        Georgia,
+        "Times New Roman",
+        serif;
+
+    font-size:
+        27px;
+
+    font-weight:
+        400;
+}
+
+
+.pp-photo-error small {
+
+    color:
+        #748190;
+
+    font-size:
+        8px;
+
+    line-height:
+        1.7;
+}
+
+
+.pp-story-image-frame.image-error
+.pp-photo-error {
+
+    display:
+        flex;
+}
+
+
+/* =========================================================
+   STORY COPY
+   ========================================================= */
+
+.pp-story-label {
+
+    color:
+        #95784b;
+
+    font-size:
+        8px;
+
+    font-weight:
+        800;
+
+    letter-spacing:
+        2.3px;
+
+    text-transform:
+        uppercase;
+}
+
+
+.pp-story-title {
+
+    margin:
+        11px 0 0;
+
+    max-width:
+        660px;
+
+    font-family:
+        Georgia,
+        "Times New Roman",
+        serif;
+
+    font-size:
+        clamp(
+            43px,
+            5vw,
+            66px
+        );
+
+    font-weight:
+        400;
+
+    line-height:
+        .96;
+
+    letter-spacing:
+        -2.6px;
+}
+
+
+.pp-story-title span {
+
+    display:
+        block;
+
+    color:
+        var(--gold-dark);
+}
+
+
+.pp-story-copy {
+
+    max-width:
+        630px;
+
+    margin-top:
+        23px;
+
+    color:
+        var(--ink-muted);
+
+    font-size:
+        11px;
+
+    line-height:
+        1.9;
+}
+
+
+/* =========================================================
+   OWNER CARDS
+   ========================================================= */
+
+.pp-owner-grid {
+
+    display:
+        grid;
+
+    grid-template-columns:
+        1fr
+        1fr;
+
+    gap:
+        10px;
+
+    margin-top:
+        31px;
+}
+
+
+.pp-owner-card {
+
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    gap:
+        12px;
+
+    width:
+        100%;
+
+    min-width:
+        0;
+
+    padding:
+        12px;
+
+    border:
+        1px solid
+        var(--paper-line);
+
+    border-radius:
+        13px;
+
+    background:
+        var(--paper-2);
+
+    color:
+        var(--ink);
+
+    text-align:
+        left;
+
+    cursor:
+        pointer;
+
+    font-family:
+        inherit;
+
+    transition:
+        transform .22s ease,
+        border-color .22s ease,
+        box-shadow .22s ease;
+}
+
+
+.pp-owner-card:hover {
+
+    transform:
+        translateY(-4px);
+
+    border-color:
+        #baa072;
+
+    box-shadow:
+        0 17px 36px
+        rgba(34,27,17,.08);
+}
+
+
+/* =========================================================
+   INDIVIDUAL OWNER PHOTO
+   ========================================================= */
+
+.pp-owner-photo {
+
+    flex:
+        0 0 51px;
+
+    width:
+        51px;
+
+    height:
+        51px;
+
+    overflow:
+        hidden;
+
+    border-radius:
+        50%;
+
+    border:
+        2px solid
+        #c0a36c;
+
+    background:
+        #ded6c9;
+}
+
+
+.pp-owner-photo img {
+
+    display:
+        block;
+
+    width:
+        100%;
+
+    height:
+        100%;
+
+    object-fit:
+        cover;
+
+    object-position:
+        center;
+}
+
+
+.pp-owner-info {
+
+    flex:
+        1;
+
+    min-width:
+        0;
+}
+
+
+.pp-owner-info strong {
+
+    display:
+        block;
+
+    font-size:
+        10.5px;
+
+    white-space:
+        nowrap;
+
+    overflow:
+        hidden;
+
+    text-overflow:
+        ellipsis;
+}
+
+
+.pp-owner-info small {
+
+    display:
+        block;
+
+    margin-top:
+        4px;
+
+    color:
+        #81796d;
+
+    font-size:
+        7px;
+}
+
+
+.pp-owner-arrow {
+
+    flex:
+        0 0 auto;
+
+    color:
+        #97794b;
+
+    font-size:
+        15px;
+}
+
+
+/* =========================================================
+   VISION
+   ========================================================= */
+
+.pp-vision {
+
+    position:
+        relative;
+
+    padding:
+        100px 0;
+
+    overflow:
+        hidden;
+
+    background:
+
+        radial-gradient(
+            circle at 82% 17%,
+            rgba(62,186,255,.13),
+            transparent 28%
+        ),
+
+        radial-gradient(
+            circle at 18% 78%,
+            rgba(130,69,255,.08),
+            transparent 27%
+        ),
+
+        linear-gradient(
+            135deg,
+            #07111f,
+            #0b1a2d
+        );
+
+    color:
+        var(--white);
+}
+
+
+.pp-vision::before {
+
+    content:
+        "";
+
+    position:
+        absolute;
+
+    inset:
+        0;
+
+    background:
+
+        linear-gradient(
+            rgba(255,255,255,.021) 1px,
+            transparent 1px
+        ),
+
+        linear-gradient(
+            90deg,
+            rgba(255,255,255,.021) 1px,
+            transparent 1px
+        );
+
+    background-size:
+        50px 50px;
+
+    opacity:
+        .38;
+
+    pointer-events:
+        none;
+}
+
+
+.pp-vision-head {
+
+    position:
+        relative;
+
+    z-index:
+        2;
+
+    display:
+        grid;
+
+    grid-template-columns:
+        .9fr
+        1.1fr;
+
+    gap:
+        70px;
+
+    margin-bottom:
+        45px;
+}
+
+
+.pp-vision-head .pp-label {
+
+    color:
+        var(--blue);
+}
+
+
+.pp-vision-head h2 {
+
+    margin:
+        10px 0 0;
+
+    max-width:
+        680px;
+
+    font-family:
+        Georgia,
+        "Times New Roman",
+        serif;
+
+    font-size:
+        clamp(
+            43px,
+            5vw,
+            65px
+        );
+
+    font-weight:
+        400;
+
+    line-height:
+        .96;
+
+    letter-spacing:
+        -2.4px;
+}
+
+
+.pp-vision-head p {
+
+    margin:
+        28px 0 0;
+
+    color:
+        #7f8b99;
+
+    font-size:
+        10.5px;
+
+    line-height:
+        1.85;
+}
+
+
+/* =========================================================
+   VALUES
+   ========================================================= */
+
+.pp-values {
+
+    position:
+        relative;
+
+    z-index:
+        2;
+
+    display:
+        grid;
+
+    grid-template-columns:
+        repeat(3, 1fr);
+
+    border-top:
+        1px solid
+        rgba(255,255,255,.09);
+
+    border-left:
+        1px solid
+        rgba(255,255,255,.09);
+}
+
+
+.pp-value {
+
+    min-height:
+        215px;
+
+    padding:
+        26px;
+
+    border-right:
+        1px solid
+        rgba(255,255,255,.09);
+
+    border-bottom:
+        1px solid
+        rgba(255,255,255,.09);
+
+    transition:
+        background .22s ease,
+        transform .22s ease;
+}
+
+
+.pp-value:hover {
+
+    background:
+        rgba(255,255,255,.035);
+
+    transform:
+        translateY(-3px);
+}
+
+
+.pp-value span {
+
+    color:
+        #81cef9;
+
+    font-size:
+        7px;
+
+    font-weight:
+        800;
+
+    letter-spacing:
+        1.8px;
+}
+
+
+.pp-value h3 {
+
+    margin:
+        39px 0 10px;
+
+    font-family:
+        Georgia,
+        "Times New Roman",
+        serif;
+
+    font-size:
+        24px;
+
+    font-weight:
+        400;
+}
+
+
+.pp-value p {
+
+    margin:
+        0;
+
+    color:
+        #747d77;
+
+    font-size:
+        9px;
+
+    line-height:
+        1.75;
+}
+
+
+/* =========================================================
+   PLATFORM
+   ========================================================= */
+
+.pp-platform {
+
+    padding:
+        100px 0;
+
+    background:
+        var(--paper);
+}
+
+
+.pp-platform-head {
+
+    display:
+        grid;
+
+    grid-template-columns:
+        .9fr
+        1.1fr;
+
+    gap:
+        70px;
+
+    margin-bottom:
+        42px;
+}
+
+
+.pp-platform-head h2 {
+
+    margin:
+        10px 0 0;
+
+    max-width:
+        680px;
+
+    font-family:
+        Georgia,
+        "Times New Roman",
+        serif;
+
+    font-size:
+        clamp(
+            42px,
+            4.8vw,
+            63px
+        );
+
+    font-weight:
+        400;
+
+    line-height:
+        .97;
+
+    letter-spacing:
+        -2.2px;
+}
+
+
+.pp-platform-head p {
+
+    margin:
+        29px 0 0;
+
+    color:
+        #706a61;
+
+    font-size:
+        10.5px;
+
+    line-height:
+        1.8;
+}
+
+
+.pp-platform-grid {
+
+    display:
+        grid;
+
+    grid-template-columns:
+        repeat(4, 1fr);
+
+    border-top:
+        1px solid
+        var(--paper-line);
+
+    border-left:
+        1px solid
+        var(--paper-line);
+}
+
+
+.pp-platform-item {
+
+    min-height:
+        185px;
+
+    padding:
+        25px;
+
+    border-right:
+        1px solid
+        var(--paper-line);
+
+    border-bottom:
+        1px solid
+        var(--paper-line);
+}
+
+
+.pp-platform-item span {
+
+    color:
+        #987a4b;
+
+    font-size:
+        7px;
+
+    font-weight:
+        800;
+
+    letter-spacing:
+        1.8px;
+}
+
+
+.pp-platform-item h3 {
+
+    margin:
+        37px 0 10px;
+
+    font-family:
+        Georgia,
+        "Times New Roman",
+        serif;
+
+    font-size:
+        23px;
+
+    font-weight:
+        400;
+}
+
+
+.pp-platform-item p {
+
+    margin:
+        0;
+
+    color:
+        #756f66;
+
+    font-size:
+        9px;
+
+    line-height:
+        1.75;
+}
+
+
+/* =========================================================
+   CTA
+   ========================================================= */
+
+.pp-about-cta {
+
+    padding:
+        80px 0;
+
+    background:
+
+        radial-gradient(
+            circle at 80% 20%,
+            rgba(62,184,255,.11),
+            transparent 28%
+        ),
+
+        #101b29;
+
+    color:
+        var(--white);
+}
+
+
+.pp-about-cta-inner {
+
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    justify-content:
+        space-between;
+
+    gap:
+        40px;
+}
+
+
+.pp-about-cta h2 {
+
+    margin:
+        9px 0 8px;
+
+    max-width:
+        700px;
+
+    font-family:
+        Georgia,
+        "Times New Roman",
+        serif;
+
+    font-size:
+        clamp(
+            41px,
+            4.8vw,
+            61px
+        );
+
+    font-weight:
+        400;
+
+    line-height:
+        .96;
+
+    letter-spacing:
+        -2.3px;
+}
+
+
+.pp-about-cta p {
+
+    margin:
+        0;
+
+    color:
+        #7d8997;
+
+    font-size:
+        9px;
+}
+
+
+.pp-cta-buttons {
+
+    display:
+        flex;
+
+    flex-wrap:
+        wrap;
+
+    gap:
+        9px;
+}
+
+
+.pp-cta-button {
+
+    min-height:
+        46px;
+
+    display:
+        inline-flex;
+
+    align-items:
+        center;
+
+    justify-content:
+        center;
+
+    padding:
+        11px 19px;
+
+    border-radius:
+        9px;
+
+    text-decoration:
+        none;
+
+    font-size:
+        8px;
+
+    font-weight:
+        800;
+
+    letter-spacing:
+        .6px;
+
+    text-transform:
+        uppercase;
+}
+
+
+.pp-cta-button.primary {
+
+    background:
+        #d4b46f;
+
+    color:
+        #171613;
+}
+
+
+.pp-cta-button.secondary {
+
+    color:
+        #e7edf4;
+
+    background:
+        rgba(255,255,255,.035);
+
+    border:
+        1px solid
+        rgba(255,255,255,.14);
+}
+
+
+/* =========================================================
+   SOCIAL MODAL
+   ========================================================= */
+
+.pp-social-overlay {
+
+    position:
+        fixed;
+
+    inset:
+        0;
+
+    z-index:
+        9999;
+
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    justify-content:
+        center;
+
+    padding:
+        20px;
+
+    background:
+        rgba(2,7,14,.76);
+
+    backdrop-filter:
+        blur(14px);
+
+    -webkit-backdrop-filter:
+        blur(14px);
+
+    opacity:
+        0;
+
+    visibility:
+        hidden;
+
+    transition:
+        opacity .23s ease,
+        visibility .23s ease;
+}
+
+
+.pp-social-overlay.active {
+
+    opacity:
+        1;
+
+    visibility:
+        visible;
+}
+
+
+.pp-social-modal {
+
+    position:
+        relative;
+
+    width:
+        min(
+            430px,
+            100%
+        );
+
+    padding:
+        28px;
+
+    border:
+        1px solid
+        rgba(255,255,255,.13);
+
+    border-radius:
+        22px;
+
+    background:
+
+        radial-gradient(
+            circle at 80% 40%,
+            rgba(69,188,255,.14),
+            transparent 30%
+        ),
+
+        linear-gradient(
+            145deg,
+            #101d2d,
+            #0a1420
+        );
+
+    box-shadow:
+        0 35px 100px
+        rgba(0,0,0,.45);
+
+    transform:
+        translateY(15px)
+        scale(.97);
+
+    transition:
+        transform .23s ease;
+}
+
+
+.pp-social-overlay.active
+.pp-social-modal {
+
+    transform:
+        translateY(0)
+        scale(1);
+}
+
+
+.pp-modal-close {
+
+    position:
+        absolute;
+
+    top:
+        14px;
+
+    right:
+        14px;
+
+    width:
+        33px;
+
+    height:
+        33px;
+
+    display:
+        grid;
+
+    place-items:
+        center;
+
+    border:
+        1px solid
+        rgba(255,255,255,.10);
+
+    border-radius:
+        50%;
+
+    background:
+        rgba(255,255,255,.04);
+
+    color:
+        #c5ced7;
+
+    cursor:
+        pointer;
+
+    font-size:
+        17px;
+}
+
+
+.pp-modal-label {
+
+    color:
+        #73ceff;
+
+    font-size:
+        7px;
+
+    font-weight:
+        800;
+
+    letter-spacing:
+        1.9px;
+
+    text-transform:
+        uppercase;
+}
+
+
+.pp-modal-title {
+
+    margin:
+        9px 0 0;
+
+    color:
+        #f1f6fb;
+
+    font-family:
+        Georgia,
+        "Times New Roman",
+        serif;
+
+    font-size:
+        28px;
+
+    font-weight:
+        400;
+}
+
+
+.pp-modal-subtitle {
+
+    margin:
+        5px 0 0;
+
+    color:
+        #778595;
+
+    font-size:
+        8px;
+}
+
+
+.pp-social-heading {
+
+    margin:
+        22px 0 10px;
+
+    color:
+        #7d8997;
+
+    font-size:
+        7px;
+
+    font-weight:
+        800;
+
+    letter-spacing:
+        1.7px;
+
+    text-transform:
+        uppercase;
+}
+
+
+.pp-social-links {
+
+    display:
+        grid;
+
+    gap:
+        9px;
+}
+
+
+.pp-social-link {
+
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    justify-content:
+        space-between;
+
+    min-height:
+        54px;
+
+    padding:
+        0 15px;
+
+    border:
+        1px solid
+        rgba(255,255,255,.09);
+
+    border-radius:
+        11px;
+
+    background:
+        rgba(255,255,255,.035);
+
+    color:
+        #edf3f8;
+
+    text-decoration:
+        none;
+
+    transition:
+        transform .2s ease,
+        background .2s ease,
+        border-color .2s ease;
+}
+
+
+.pp-social-link:hover {
+
+    transform:
+        translateX(4px);
+
+    background:
+        rgba(255,255,255,.065);
+
+    border-color:
+        rgba(78,188,255,.31);
+}
+
+
+.pp-social-left {
+
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    gap:
+        11px;
+}
+
+
+.pp-social-icon {
+
+    width:
+        30px;
+
+    height:
+        30px;
+
+    display:
+        grid;
+
+    place-items:
+        center;
+
+    border-radius:
+        8px;
+
+    background:
+        rgba(255,255,255,.07);
+
+    color:
+        #9ddcff;
+
+    font-size:
+        11px;
+
+    font-weight:
+        800;
+}
+
+
+.pp-social-copy strong {
+
+    display:
+        block;
+
+    color:
+        #edf3f8;
+
+    font-size:
+        9px;
+}
+
+
+.pp-social-copy small {
+
+    display:
+        block;
+
+    margin-top:
+        2px;
+
+    color:
+        #687582;
+
+    font-size:
+        7px;
+}
+
+
+.pp-social-arrow {
+
+    color:
+        #83909d;
+
+    font-size:
+        14px;
+}
+
+
+.pp-modal-note {
+
+    margin-top:
+        17px;
+
+    color:
+        #64717e;
+
+    font-size:
+        7px;
+
+    line-height:
+        1.65;
+}
+
+
+/* =========================================================
+   RESPONSIVE
+   ========================================================= */
+
+@media (max-width: 950px) {
+
+    .pp-about-hero-inner,
+    .pp-story-grid,
+    .pp-vision-head,
+    .pp-platform-head {
+
+        grid-template-columns:
+            1fr;
+    }
+
+    .pp-values,
+    .pp-platform-grid {
+
+        grid-template-columns:
+            1fr 1fr;
+    }
+
+    .pp-about-cta-inner {
+
+        display:
+            grid;
+    }
+
+}
+
+
+@media (max-width: 620px) {
+
+    .pp-about-wrap {
+
+        width:
+            calc(100% - 30px);
+    }
+
+    .pp-about-hero {
+
+        min-height:
+            auto;
+    }
+
+    .pp-about-hero-inner {
+
+        min-height:
+            auto;
+
+        padding:
+            58px 0 48px;
+
+        gap:
+            35px;
+    }
+
+    .pp-about-hero h1 {
+
+        font-size:
+            56px;
+
+        letter-spacing:
+            -2px;
+    }
+
+    .pp-story,
+    .pp-vision,
+    .pp-platform,
+    .pp-about-cta {
+
+        padding:
+            70px 0;
+    }
+
+    .pp-owner-grid {
+
+        grid-template-columns:
+            1fr;
+    }
+
+    .pp-values,
+    .pp-platform-grid {
+
+        grid-template-columns:
+            1fr;
+    }
+
+    .pp-about-cta-inner {
+
+        display:
+            block;
+    }
+
+    .pp-cta-buttons {
+
+        margin-top:
+            24px;
+    }
+
+    .pp-social-modal {
+
+        padding:
+            23px;
+    }
+
+}
+
+</style>
+
+
+<!-- =========================================================
+     ABOUT PAGE
+     ========================================================= -->
+
+<div class="pp-about-page">
+
+
+    <!-- =====================================================
+         HERO
+         ===================================================== -->
+
+    <section class="pp-about-hero">
+
+        <div class="pp-about-wrap pp-about-hero-inner">
+
+
+            <div>
+
+                <span class="pp-label">
+                    ABOUT PRIMEHARBOUR
+                </span>
+
+
+                <h1>
+
+                    Built with
+                    <span>purpose.</span>
+
+                </h1>
+
+
+                <p class="pp-about-hero-copy">
+
+                    PrimeHarbour is being developed as a modern digital platform
+                    bringing investment participation, useful information and
+                    a focused digital experience together in one place.
+
+                </p>
+
+            </div>
+
+
+            <div class="pp-about-glass">
+
+                <div class="pp-glass-top">
+
+                    <span>
+                        PRIMEHARBOUR
+                    </span>
+
+                    <span>
+                        OUR STORY
+                    </span>
+
+                </div>
+
+
+                <div class="pp-glass-content">
+
+                    <small>
+                        THE IDEA
+                    </small>
+
+
+                    <strong>
+
+                        Make the complicated
+                        easier to understand.
+
+                    </strong>
+
+                </div>
+
+
+                <div class="pp-glass-bottom">
+
+                    INVEST · LEARN · UNDERSTAND
+
+                </div>
+
+            </div>
+
+
+        </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         STORY + LARGE PHOTO
+         ===================================================== -->
+
+    <section class="pp-story">
+
+        <div class="pp-about-wrap pp-story-grid">
+
+
+            <!-- =================================================
+                 LARGE STORY PHOTO
+                 ================================================= -->
+
+            <div
+                class="pp-story-image-frame"
+                id="storyPhotoFrame"
+            >
+
+                <img
+                    src="{{ url_for('static', filename='images/primepair-story-banner.png') }}"
+                    alt="PrimeHarbour founders"
+                    class="pp-story-image"
+                    id="storyPhoto"
+                >
+
+
+                <div class="pp-photo-error">
+
+                    <div>
+
+                        <strong>
+                            PrimeHarbour
+                        </strong>
+
+                        <small>
+                            Story photo not found.<br>
+                            Required file:<br>
+                            static/images/primepair-story-banner.png
+                        </small>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- =================================================
+                 STORY TEXT
+                 ================================================= -->
+
+            <div class="pp-founders-copy">
+
+
+                <span class="pp-story-label">
+                    THE FOUNDERS
+                </span>
+
+
+                <h2 class="pp-story-title">
+
+                    Two founders.
+                    <span>One direction.</span>
+
+                </h2>
+
+
+                <p class="pp-story-copy">
+
+                    PrimeHarbour was created around a simple idea:
+                    build a digital experience that feels clear, modern and
+                    easier to navigate.
+
+                    The project is being developed jointly by Sachin
+                    Chaudhary and Abhitesh Chaudhary, with a focus on building
+                    a consistent and understandable digital platform.
+
+                </p>
+
+
+                <!-- =================================================
+                     OWNER CARDS
+                     ================================================= -->
+
+                <div class="pp-owner-grid">
+
+
+                    <!-- SACHIN -->
+
+                    <button
+                        type="button"
+                        class="pp-owner-card"
+                        onclick="openOwner('sachin')"
+                        aria-label="Open Sachin Chaudhary socials"
+                    >
+
+                        <div class="pp-owner-photo">
+
+                            <img
+                                src="{{ url_for('static', filename='images/sachin.png') }}"
+                                alt="Sachin Chaudhary"
+                                loading="lazy"
+                            >
+
+                        </div>
+
+
+                        <div class="pp-owner-info">
+
+                            <strong>
+                                Sachin Chaudhary
+                            </strong>
+
+                            <small>
+                                Co-founder · View socials
+                            </small>
+
+                        </div>
+
+
+                        <span class="pp-owner-arrow">
+                            →
+                        </span>
+
+                    </button>
+
+
+                    <!-- ABHITESH -->
+
+                    <button
+                        type="button"
+                        class="pp-owner-card"
+                        onclick="openOwner('abhitesh')"
+                        aria-label="Open Abhitesh Chaudhary socials"
+                    >
+
+                        <div class="pp-owner-photo">
+
+                            <img
+                                src="{{ url_for('static', filename='images/abhitesh.png') }}"
+                                alt="Abhitesh Chaudhary"
+                                loading="lazy"
+                            >
+
+                        </div>
+
+
+                        <div class="pp-owner-info">
+
+                            <strong>
+                                Abhitesh Chaudhary
+                            </strong>
+
+                            <small>
+                                Co-founder · View socials
+                            </small>
+
+                        </div>
+
+
+                        <span class="pp-owner-arrow">
+                            →
+                        </span>
+
+                    </button>
+
+
+                </div>
+
+
+            </div>
+
+
+        </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         VISION
+         ===================================================== -->
+
+    <section class="pp-vision">
+
+        <div class="pp-about-wrap">
+
+
+            <div class="pp-vision-head">
+
+
+                <div>
+
+                    <span class="pp-label">
+                        THE VISION
+                    </span>
+
+
+                    <h2>
+
+                        Make every important
+                        step easier to see.
+
+                    </h2>
+
+                </div>
+
+
+                <div>
+
+                    <p>
+
+                        PrimeHarbour is designed around a straightforward digital
+                        journey. Each part of the platform should have a clear
+                        purpose and remain easy to navigate.
+
+                    </p>
+
+                </div>
+
+
+            </div>
+
+
+            <div class="pp-values">
+
+
+                <article class="pp-value">
+
+                    <span>
+                        01 · CLARITY
+                    </span>
+
+                    <h3>
+                        Clear information
+                    </h3>
+
+                    <p>
+
+                        Important information should be easy to find, compare
+                        and understand.
+
+                    </p>
+
+                </article>
+
+
+                <article class="pp-value">
+
+                    <span>
+                        02 · EXPERIENCE
+                    </span>
+
+                    <h3>
+                        Better interface
+                    </h3>
+
+                    <p>
+
+                        Each page should have a clear purpose and a consistent
+                        visual language.
+
+                    </p>
+
+                </article>
+
+
+                <article class="pp-value">
+
+                    <span>
+                        03 · LONG TERM
+                    </span>
+
+                    <h3>
+                        Think ahead
+                    </h3>
+
+                    <p>
+
+                        Develop PrimeHarbour as a long-term digital platform with one clear participation structure.
+
+                    </p>
+
+                </article>
+
+
+            </div>
+
+
+        </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         PLATFORM
+         ===================================================== -->
+
+    <section class="pp-platform">
+
+        <div class="pp-about-wrap">
+
+
+            <div class="pp-platform-head">
+
+
+                <div>
+
+                    <span class="pp-story-label">
+                        THE PLATFORM
+                    </span>
+
+
+                    <h2>
+                        More than one page.
+                    </h2>
+
+                </div>
+
+
+                <p>
+
+                    PrimeHarbour brings several connected parts of the experience
+                    together while keeping each area focused on its purpose.
+
+                </p>
+
+
+            </div>
+
+
+            <div class="pp-platform-grid">
+
+
+                <article class="pp-platform-item">
+
+                    <span>
+                        01 · INVEST
+                    </span>
+
+                    <h3>
+                        Model
+                    </h3>
+
+                    <p>
+
+                        Explore the PrimeHarbour participation model
+                        and its applicable written terms.
+
+                    </p>
+
+                </article>
+
+
+                <article class="pp-platform-item">
+
+                    <span>
+                        02 · LEARN
+                    </span>
+
+                    <h3>
+                        Education
+                    </h3>
+
+                    <p>
+
+                        Keep educational information separate from the
+                        participation journey.
+
+                    </p>
+
+                </article>
+
+
+                <article class="pp-platform-item">
+
+                    <span>
+                        03 · COMMUNITY
+                    </span>
+
+                    <h3>
+                        Community
+                    </h3>
+
+                    <p>
+
+                        Build a connected environment around the broader
+                        PrimeHarbour platform and community.
+
+                    </p>
+
+                </article>
+
+
+                <article class="pp-platform-item">
+
+                    <span>
+                        04 · EXPERIENCE
+                    </span>
+
+                    <h3>
+                        One interface
+                    </h3>
+
+                    <p>
+
+                        Maintain a consistent experience across desktop and
+                        mobile.
+
+                    </p>
+
+                </article>
+
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         CTA
+         ===================================================== -->
+
+    <section class="pp-about-cta">
+
+        <div class="pp-about-wrap pp-about-cta-inner">
+
+
+            <div>
+
+                <span class="pp-label">
+                    PRIMEHARBOUR
+                </span>
+
+
+                <h2>
+                    Explore the platform.
+                </h2>
+
+
+                <p>
+                    Review the participation model and discover the PrimeHarbour
+                    experience.
+                </p>
+
+            </div>
+
+
+            <div class="pp-cta-buttons">
+
+                <a
+                    href="{{ url_for('invest') }}"
+                    class="pp-cta-button primary"
+                >
+                    Investment desk →
+                </a>
+
+
+                <a
+                    href="{{ url_for('home') }}"
+                    class="pp-cta-button secondary"
+                >
+                    Home
+                </a>
+
+            </div>
+
+
+        </div>
+
+    </section>
+
+
+</div>
+
+
+<!-- =========================================================
+     SOCIAL POPUP
+     ========================================================= -->
+
+<div
+    id="ppSocialOverlay"
+    class="pp-social-overlay"
+    onclick="closeSocialPopup(event)"
+    aria-hidden="true"
+>
+
+
+    <div
+        class="pp-social-modal"
+        role="dialog"
+        aria-modal="true"
+        onclick="event.stopPropagation()"
+    >
+
+
+        <button
+            type="button"
+            class="pp-modal-close"
+            onclick="closeSocialPopup()"
+            aria-label="Close"
+        >
+            ×
+        </button>
+
+
+        <span class="pp-modal-label">
+            PRIMEHARBOUR · SOCIALS
+        </span>
+
+
+        <h3
+            id="ppModalName"
+            class="pp-modal-title"
+        >
+            Sachin Chaudhary
+        </h3>
+
+
+        <p
+            id="ppModalRole"
+            class="pp-modal-subtitle"
+        >
+            Co-founder · PrimeHarbour
+        </p>
+
+
+        <div class="pp-social-heading">
+            CONNECT
+        </div>
+
+
+        <div class="pp-social-links">
+
+
+            <!-- INSTAGRAM -->
+
+            <a
+                id="ppInstagram"
+                href="#"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="pp-social-link"
+            >
+
+                <div class="pp-social-left">
+
+                    <div class="pp-social-icon">
+                        ◎
+                    </div>
+
+
+                    <div class="pp-social-copy">
+
+                        <strong>
+                            Instagram
+                        </strong>
+
+                        <small id="ppInstagramText">
+                            Instagram profile
+                        </small>
+
+                    </div>
+
+                </div>
+
+
+                <span class="pp-social-arrow">
+                    ↗
+                </span>
+
+            </a>
+
+
+            <!-- DISCORD -->
+
+            <a
+                id="ppDiscord"
+                href="https://discord.gg/Hm5V2bNxeq"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="pp-social-link"
+            >
+
+                <div class="pp-social-left">
+
+                    <div class="pp-social-icon">
+                        D
+                    </div>
+
+
+                    <div class="pp-social-copy">
+
+                        <strong>
+                            Discord
+                        </strong>
+
+                        <small>
+                            PrimeHarbour community
+                        </small>
+
+                    </div>
+
+                </div>
+
+
+                <span class="pp-social-arrow">
+                    ↗
+                </span>
+
+            </a>
+
+
+        </div>
+
+
+        <div class="pp-modal-note">
+
+            Social profiles open in a new tab.
+
+        </div>
+
+
+    </div>
+
+</div>
+
+
+<script>
+
+/* =========================================================
+   STORY PHOTO CHECK
+   ========================================================= */
+
+(function () {
+
+    const image =
+        document.getElementById(
+            "storyPhoto"
+        );
+
+    const frame =
+        document.getElementById(
+            "storyPhotoFrame"
+        );
+
+
+    if (!image || !frame) {
+        return;
+    }
+
+
+    image.addEventListener(
+        "error",
+        function () {
+
+            frame.classList.add(
+                "image-error"
+            );
+
+        }
+    );
+
+})();
+
+
+/* =========================================================
+   OWNER SOCIAL DATA
+   ========================================================= */
+
+const primepairOwners = {
+
+    sachin: {
+
+        name:
+            "Sachin Chaudhary",
+
+        role:
+            "Co-founder · PrimeHarbour",
+
+        instagram:
+            "https://instagram.com/__fxsachin",
+
+        instagramText:
+            "@__fxsachin",
+
+        discord:
+            "https://discord.gg/Hm5V2bNxeq"
+
+    },
+
+
+    abhitesh: {
+
+        name:
+            "Abhitesh Chaudhary",
+
+        role:
+            "Co-founder · PrimeHarbour",
+
+        instagram:
+            "https://instagram.com/",
+
+        instagramText:
+            "Instagram profile",
+
+        discord:
+            "https://discord.gg/Hm5V2bNxeq"
+
+    }
+
+};
+
+
+/* =========================================================
+   OPEN SOCIAL POPUP
+   ========================================================= */
+
+function openOwner(ownerKey) {
+
+    const owner =
+        primepairOwners[
+            ownerKey
+        ];
+
+
+    if (!owner) {
+        return;
+    }
+
+
+    const overlay =
+        document.getElementById(
+            "ppSocialOverlay"
+        );
+
+
+    const name =
+        document.getElementById(
+            "ppModalName"
+        );
+
+
+    const role =
+        document.getElementById(
+            "ppModalRole"
+        );
+
+
+    const instagram =
+        document.getElementById(
+            "ppInstagram"
+        );
+
+
+    const instagramText =
+        document.getElementById(
+            "ppInstagramText"
+        );
+
+
+    const discord =
+        document.getElementById(
+            "ppDiscord"
+        );
+
+
+    name.textContent =
+        owner.name;
+
+
+    role.textContent =
+        owner.role;
+
+
+    instagram.href =
+        owner.instagram;
+
+
+    instagramText.textContent =
+        owner.instagramText;
+
+
+    discord.href =
+        owner.discord;
+
+
+    overlay.classList.add(
+        "active"
+    );
+
+
+    overlay.setAttribute(
+        "aria-hidden",
+        "false"
+    );
+
+
+    document.body.style.overflow =
+        "hidden";
+
+}
+
+
+/* =========================================================
+   CLOSE SOCIAL POPUP
+   ========================================================= */
+
+function closeSocialPopup(event) {
+
+    if (
+        event &&
+        event.target &&
+        event.target.id !==
+        "ppSocialOverlay"
+    ) {
+
+        return;
+
+    }
+
+
+    const overlay =
+        document.getElementById(
+            "ppSocialOverlay"
+        );
+
+
+    if (!overlay) {
+        return;
+    }
+
+
+    overlay.classList.remove(
+        "active"
+    );
+
+
+    overlay.setAttribute(
+        "aria-hidden",
+        "true"
+    );
+
+
+    document.body.style.overflow =
+        "";
+
+}
+
+
+/* =========================================================
+   ESCAPE KEY
+   ========================================================= */
+
+document.addEventListener(
+    "keydown",
+    function (event) {
+
+        if (
+            event.key === "Escape"
+        ) {
+
+            closeSocialPopup();
+
+        }
+
+    }
+);
+
+</script>
+
+{% endblock %}

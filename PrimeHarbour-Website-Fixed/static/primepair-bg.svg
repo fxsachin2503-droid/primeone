@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" preserveAspectRatio="xMidYMid slice">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#2b2924"/>
+      <stop offset="0.45" stop-color="#4d4335"/>
+      <stop offset="1" stop-color="#10110f"/>
+    </linearGradient>
+    <radialGradient id="sun" cx="74%" cy="22%" r="42%">
+      <stop offset="0" stop-color="#ead7ae" stop-opacity="0.55"/>
+      <stop offset="1" stop-color="#ead7ae" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="ridge1" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#2b2a25"/>
+      <stop offset="1" stop-color="#151613"/>
+    </linearGradient>
+    <linearGradient id="ridge2" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#151613"/>
+      <stop offset="1" stop-color="#080907"/>
+    </linearGradient>
+    <pattern id="grid" width="70" height="70" patternUnits="userSpaceOnUse">
+      <path d="M70 0H0V70" fill="none" stroke="#e5d8ba" stroke-opacity="0.08" stroke-width="1"/>
+    </pattern>
+    <filter id="blur"><feGaussianBlur stdDeviation="24"/></filter>
+  </defs>
+  <rect width="1600" height="900" fill="url(#bg)"/>
+  <rect width="1600" height="900" fill="url(#sun)"/>
+  <ellipse cx="1220" cy="190" rx="360" ry="170" fill="#ddc28e" opacity="0.06" filter="url(#blur)"/>
+  <rect width="1600" height="900" fill="url(#grid)"/>
+  <path d="M0 640 L180 535 L320 615 L480 430 L625 560 L805 350 L965 560 L1105 435 L1260 575 L1435 390 L1600 535 L1600 900 L0 900 Z" fill="url(#ridge1)"/>
+  <path d="M0 760 L190 625 L345 690 L500 575 L670 720 L825 555 L1010 705 L1160 590 L1300 720 L1465 555 L1600 665 L1600 900 L0 900 Z" fill="url(#ridge2)"/>
+  <path d="M0 640 L180 535 L320 615 L480 430 L625 560 L805 350 L965 560 L1105 435 L1260 575 L1435 390 L1600 535" fill="none" stroke="#c6a66f" stroke-opacity="0.34" stroke-width="2"/>
+  <path d="M50 700 C190 655, 270 675, 390 630 S600 620, 720 555 S930 530, 1050 465 S1310 430, 1540 270" fill="none" stroke="#d6bd8b" stroke-opacity="0.78" stroke-width="4"/>
+  <path d="M50 700 C190 655, 270 675, 390 630 S600 620, 720 555 S930 530, 1050 465 S1310 430, 1540 270" fill="none" stroke="#f1e0bb" stroke-opacity="0.12" stroke-width="13"/>
+  <g fill="#e3c890" opacity="0.55">
+    <circle cx="390" cy="630" r="5"/><circle cx="720" cy="555" r="5"/><circle cx="1050" cy="465" r="5"/><circle cx="1540" cy="270" r="6"/>
+  </g>
+  <rect width="1600" height="900" fill="#000" opacity="0.15"/>
+</svg>

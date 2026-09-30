@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% block title %}Admin | PrimeHarbour{% endblock %}
+{% block content %}
+<section class="pp-page-hero admin-hero"><div class="site-wrap pp-page-hero-inner"><span class="eyebrow">PRIMEHARBOUR · ADMIN DESK</span><h1>Keep the public<br><em>framework precise.</em></h1><p>Manage the one-month term, published monthly slides, policy text, Discord route and incoming review requests.</p></div></section>
+
+<section class="pp-section pp-dark-feature"><div class="site-wrap">
+  <form class="ph-admin-settings premium-admin" method="post">
+    <input type="hidden" name="action" value="save_settings">
+    <div class="ph-admin-head"><div><span class="eyebrow">PUBLIC SETTINGS</span><h2>Control what is displayed.</h2></div><button class="button button-primary" type="submit">Save settings</button></div>
+    <div class="ph-admin-grid">
+      <label>One-month capital share %<input name="profit_share" type="number" min="0" max="100" step="1" value="{{ settings.profit_share }}"></label>
+      <label>Qualifying loss-refund %<input name="loss_refund" type="number" min="0" max="100" step="1" value="{{ settings.loss_refund }}"></label>
+      <label>Agreement version<input name="agreement_version" value="{{ settings.agreement_version }}"></label>
+      <label>Support email<input name="support_email" type="email" value="{{ settings.support_email }}"></label>
+      <label>Discord community URL<input name="discord_link" value="{{ settings.discord_link }}"></label>
+      <label>Discord ticket URL<input name="discord_ticket_url" value="{{ settings.discord_ticket_url }}" placeholder="Optional dedicated ticket URL"></label>
+      <label class="wide">Announcement<input name="announcement" value="{{ settings.announcement }}" placeholder="Optional site-wide notice"></label>
+      <label class="wide">Primary published monthly figure<input name="monthly_growth" value="{{ settings.monthly_growth }}" placeholder="Example: +6.2% — May 2026"></label>
+      <label class="wide">Monthly slideshow values<textarea name="monthly_slides" rows="8" placeholder="JAN | +7%&#10;FEB | +1.4%&#10;MAR | +5%&#10;APR | —&#10;MAY | +4%&#10;JUN | —&#10;JUL | —&#10;AUG | +7.2%">{{ settings.monthly_slides }}</textarea></label>
+      <label class="wide">Tagline<input name="tagline" value="{{ settings.tagline }}"></label>
+      <label class="wide">Trading Risk &amp; PrimeHarbour Policy<textarea name="policy_text" rows="13">{{ settings.policy_text }}</textarea></label>
+    </div>
+  </form>
+</div></section>
+
+<section class="pp-section pp-light" id="requests"><div class="site-wrap"><div class="pp-intro"><div><span class="eyebrow">PARTICIPATION REQUESTS</span><h2>Review incoming requests.</h2></div><p>Each request records the public settings visible at the time of submission.</p></div>
+<div class="ph-request-list">
+{% for item in requests %}
+  <article class="ph-request-row"><div><span class="ph-status">{{ item.status }}</span><strong>{{ item.full_name }}</strong><small>{{ item.email }} · {{ item.amount_display }} · {{ item.submitted_at }}</small><small>ID {{ item.id }} · Agreement {{ item.agreement_version }} · Share {{ item.profit_share_at_request }}% · Refund {{ item.loss_refund_at_request }}%</small></div><form method="post"><input type="hidden" name="action" value="update_request"><input type="hidden" name="request_id" value="{{ item.id }}"><select name="status"><option {% if item.status=='New' %}selected{% endif %}>New</option><option {% if item.status=='Reviewing' %}selected{% endif %}>Reviewing</option><option {% if item.status=='Approved' %}selected{% endif %}>Approved</option><option {% if item.status=='Declined' %}selected{% endif %}>Declined</option><option {% if item.status=='Completed' %}selected{% endif %}>Completed</option></select><button class="button button-secondary" type="submit">Update</button></form></article>
+{% else %}<div class="ph-growth-empty">No participation requests yet.</div>{% endfor %}
+</div></div></section>
+{% endblock %}

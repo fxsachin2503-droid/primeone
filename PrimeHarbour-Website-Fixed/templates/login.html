@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% block title %}Sign In | PrimeHarbour{% endblock %}
+{% block content %}
+<section class="account-page">
+  <div class="account-visual">
+    <div class="account-grid-lines"></div>
+    <div class="account-orbit"></div>
+    <div class="site-wrap account-visual-inner">
+      <span class="eyebrow">PRIMEHARBOUR · PRIVATE ACCESS</span>
+      <h1>Return to the<br><em>desk.</em></h1>
+      <p>Use your PrimeHarbour account to continue your review journey. Participation always remains subject to the applicable written agreement.</p>
+      <div class="account-stat-row"><div><small>TERM</small><strong>1 MONTH</strong></div><div><small>PUBLIC MODEL</small><strong>{{ settings.profit_share }}%</strong></div></div>
+    </div>
+  </div>
+  <div class="account-form-side">
+    <form class="account-card premium-account-card" method="post">
+      <div class="account-card-head"><span>01</span><span>ACCOUNT ACCESS</span></div>
+      <h2>Sign in.</h2>
+      <p class="account-muted">Continue with your existing PrimeHarbour credentials.</p>
+      <label>Username<input name="username" required autocomplete="username" placeholder="Your username"></label>
+      <label>Password<input name="password" type="password" required autocomplete="current-password" placeholder="Your password"></label>
+      <button class="button button-primary account-submit" type="submit">Enter the desk <span>→</span></button>
+      {% if google_login_enabled %}<a class="button button-secondary" href="{{ url_for('login_google') }}">Continue with Google</a>{% endif %}
+      {% if discord_login_enabled %}<a class="button button-secondary" href="{{ url_for('login_discord') }}">Continue with Discord</a>{% endif %}
+      <div class="account-bottom"><span>New here?</span><a href="{{ url_for('signup') }}">Create an account →</a></div>
+    </form>
+  </div>
+</section>
+{% endblock %}
